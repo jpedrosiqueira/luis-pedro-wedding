@@ -1,0 +1,103 @@
+---
+import '@fontsource-variable/fraunces/opsz.css';
+import '@fontsource-variable/instrument-sans/wght.css';
+import '../styles/theme.css';
+import '../styles/global.css';
+import frauncesUrl from '@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url';
+import sansUrl from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url';
+import { locales, langs, type Lang, useT, plain } from '../i18n';
+import { site } from '../config/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import RsvpBand from '../components/RsvpBand.astro';
+
+interface Props { lang: Lang; pageKey: string; slug?: string; title?: string; description?: string; band?: boolean; }
+const { lang, pageKey, slug = '', title, description, band = true } = Astro.props;
+const t = useT(lang);
+const loc = locales[lang];
+const fullTitle = title ? `${title} · ${t.meta.siteTitle}` : t.meta.titleSuffix;
+const desc = plain(lang, description || t.meta.description);
+const path = (l: Lang) => `/${l}/${slug ? slug + '/' : ''}`;
+const abs = (p: string) => new URL(p, Astro.site).href;
+---
+<!doctype html>
+<html lang={loc.html} data-lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // Language: remember the guest's choice; on a first visit follow the browser.
+      (function () {
+        var d = document.documentElement; d.classList.add('js');
+        try {
+          var all = ['en', 'pt', 'es'], cur = d.getAttribute('data-lang'), want = null;
+          var inside = document.referrer && document.referrer.indexOf(location.origin) === 0;
+          if (inside) return;
+          try { var s = localStorage.getItem('lang'); if (all.indexOf(s) > -1) want = s; } catch (e) {}
+          if (!want) {
+            var list = navigator.languages || [navigator.language || ''];
+            for (var i = 0; i < list.length; i++) {
+              var c = String(list[i]).slice(0, 2).toLowerCase();
+              if (all.indexOf(c) > -1) { want = c; break; }
+            }
+          }
+          if (want && want !== cur) location.replace(location.pathname.replace(/^\/(en|pt|es)\//, '/' + want + '/') + location.search + location.hash);
+        } catch (e) {}
+      })();
+    </script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    {site.noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={abs(path(lang))} />
+    {langs.map((l) => <link rel="alternate" hreflang={locales[l].html} href={abs(path(l))} />)}
+    <link rel="alternate" hreflang="x-default" href={abs(path('en'))} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={t.meta.siteTitle} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={abs(path(lang))} />
+    <meta property="og:locale" content={loc.og} />
+    {langs.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={locales[l].og} />)}
+    <meta property="og:image" content={abs(`/og/${lang}.jpg`)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t.meta.ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#f6efe4" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href={frauncesUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sansUrl} as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip" href="#main">{t.nav.skip}</a>
+    <Header lang={lang} pageKey={pageKey} slug={slug} />
+    <main id="main">
+      <slot />
+      {band && <RsvpBand lang={lang} />}
+    </main>
+    <Footer lang={lang} />
+    <script is:inline>
+      (function () {
+        // Remember an explicit language choice.
+        document.querySelectorAll('a[data-lang]').forEach(function (a) {
+          a.addEventListener('click', function () { try { localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (e) {} });
+        });
+        // Mobile menu: close on Escape or when tapping outside.
+        var menu = document.querySelector('.menu');
+        if (menu) {
+          document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); } });
+          document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+        }
+        // Gentle reveal on scroll.
+        var els = document.querySelectorAll('[data-reveal]');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('is-revealed'); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-revealed'); io.unobserve(en.target); } });
+        }, { rootMargin: '0px 0px -8% 0px' });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+  </body>
+</html>

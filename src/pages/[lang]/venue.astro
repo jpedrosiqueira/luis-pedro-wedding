@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Photo from '../../components/Photo.astro';
+import { langPaths, type Lang, useT, rich } from '../../i18n';
+import { site } from '../../config/site';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const v = t.venue;
+const q = encodeURIComponent(site.venue.mapQuery);
+---
+<Layout lang={lang} pageKey="venue" slug="venue" title={v.title} description={v.lead}>
+  <PageHero lang={lang} pageKey="venue" title={v.title} lead={v.lead} photo="venue-courtyard" photoAlt={v.about.title} />
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{v.about.title}</h2></div>
+      <div class="prose">{v.about.paragraphs.map((p) => <p set:html={rich(lang, p)} />)}</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{v.village.title}</h2></div>
+      <div class="stack">
+        <div class="prose">{v.village.paragraphs.map((p) => <p set:html={rich(lang, p)} />)}</div>
+        <Photo name="venue-village" alt={v.village.title} lang={lang} ratio="3 / 2" sizes="(min-width: 56rem) 60vw, 92vw" />
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{v.expect.title}</h2></div>
+      <ul class="rows" data-reveal>
+        {v.expect.items.map((it) => <li><h3>{it.title}</h3><p set:html={rich(lang, it.text)} /></li>)}
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head">
+        <h2>{v.map.title}</h2>
+        <p class="muted"><span translate="no">{v.map.address}</span></p>
+        <p class="small" set:html={rich(lang, v.map.note)} />
+        <p><a class="arrow-link" href={`https://www.google.com/maps/search/?api=1&query=${q}`} target="_blank" rel="noopener">{t.common.openMaps}</a></p>
+      </div>
+      <iframe class="map" title={v.map.iframeTitle} loading="lazy" referrerpolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps?q=${q}&z=14&hl=${lang}&output=embed`}></iframe>
+    </div>
+  </section>
+</Layout>

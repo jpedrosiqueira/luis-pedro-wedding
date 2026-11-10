@@ -1,0 +1,497 @@
+{
+  "_help": "Texto em português (Brasil). Edite o texto à direita dos dois-pontos; não mude as chaves à esquerda. Marcadores: [TODO: nota] mostra um lembrete destacado na página. **negrito** e [texto do link](https://endereco) funcionam. Valores inteligentes se adaptam a cada idioma: {{date:2027-11-06}}, {{time:15:00}}, {{mxn:200}}, {{dist:22}} (quilômetros), {{temp:23}} (Celsius).",
+  "_review": "Trechos para vocês revisarem (tradução em que tenho menos certeza do tom): home.intro, home.countdown.title, schedule.events.tornaboda.desc, attire.shoes.text, rsvp.fields.yes / no, faq.items (gorjeta e segurança).",
+  "meta": {
+    "siteTitle": "Luis & Pedro",
+    "titleSuffix": "Luis & Pedro · 6 de novembro de 2027",
+    "description": "Vamos nos casar no dia 6 de novembro de 2027 na Hacienda de Triana, em Val'Quirico, México. Programação, viagem, hospedagem e confirmação de presença.",
+    "ogImageAlt": "Luis e Pedro, 6 de novembro de 2027, Val'Quirico, México"
+  },
+  "nav": {
+    "home": "Início",
+    "story": "Nossa história",
+    "schedule": "Programação",
+    "venue": "O local",
+    "travel": "Como chegar",
+    "stay": "Hospedagem",
+    "explore": "O que fazer",
+    "attire": "Traje e clima",
+    "gifts": "Presentes",
+    "faq": "Dúvidas",
+    "rsvp": "Confirmar presença",
+    "menu": "Menu",
+    "skip": "Pular para o conteúdo",
+    "language": "Idioma",
+    "main": "Principal"
+  },
+  "common": {
+    "rsvp": "Confirmar presença",
+    "photoTodo": "Foto a adicionar",
+    "continue": "Continue lendo",
+    "openMaps": "Abrir no Google Maps",
+    "tbc": "A confirmar",
+    "optional": "opcional",
+    "lastChecked": "Informações conferidas em novembro de 2026. Confirme antes de reservar."
+  },
+  "home": {
+    "eyebrow": "Vamos nos casar",
+    "date": "{{date:2027-11-06}}",
+    "place": "Hacienda de Triana · Val'Quirico, Tlaxcala, México",
+    "intro": "Três dias numa vila de pedra entre dois vulcões, com as pessoas que a gente mais ama. Venha pelo casamento, fique pelos tacos.",
+    "heroAlt": "Luis e Pedro",
+    "countdown": {
+      "title": "Falta pouco para o sim",
+      "days": "dias",
+      "hours": "horas",
+      "minutes": "minutos",
+      "seconds": "segundos",
+      "done": "Chegou o dia."
+    },
+    "calendar": {
+      "title": "Salve a data",
+      "ics": "Apple / Outlook (.ics)",
+      "google": "Google Agenda",
+      "eventTitle": "Casamento de Luis & Pedro",
+      "eventDetails": "Cerimônia, jantar e festa na Hacienda de Triana, em Val'Quirico. Mais detalhes no nosso site."
+    },
+    "weekend": {
+      "title": "O fim de semana",
+      "lead": "Chegue na sexta, dance no sábado e se despeça no brunch de domingo.",
+      "fri": "Rompe-hielo: drinques para quebrar o gelo",
+      "sat": "Cerimônia, jantar e festa até as 23h",
+      "sun": "Brunch de despedida",
+      "link": "Ver a programação completa"
+    },
+    "gettingThere": {
+      "title": "Como chegar",
+      "lead": "Val'Quirico fica no estado de Tlaxcala, a cerca de meia hora da cidade de Puebla.",
+      "pbcValue": "20–30 min",
+      "pbcLabel": "de carro do aeroporto de Puebla (PBC)",
+      "mexValue": "1½–2 h",
+      "mexLabel": "de carro do aeroporto da Cidade do México (MEX)",
+      "link": "Planeje sua viagem"
+    },
+    "index": {
+      "title": "Tudo o que você precisa saber",
+      "story": "Como duas pessoas de países diferentes vieram parar aqui",
+      "schedule": "Três dias, hora por hora",
+      "venue": "Um pátio murado numa vila de pedra",
+      "travel": "Aeroportos, motoristas, vans e passaportes",
+      "stay": "Durma dentro da vila ou em Puebla",
+      "explore": "Pirâmides, vulcões e mole poblano",
+      "attire": "Dias quentes, noites frias, ruas de pedra",
+      "gifts": "Sua presença é o presente",
+      "faq": "Dinheiro, celular, crianças, chuva e mais"
+    },
+    "rsvpBand": {
+      "title": "Você vem?",
+      "text": "Conte para a gente quem vem e quando chega, para organizarmos os lugares e o transporte."
+    }
+  },
+  "story": {
+    "title": "Nossa história",
+    "lead": "[TODO: uma frase sobre como vocês se conheceram]",
+    "paragraphs": [
+      "[TODO: a história de vocês, primeiro parágrafo. Como e onde se conheceram, e o que cada um reparou primeiro no outro.]",
+      "[TODO: segundo parágrafo. Os anos seguintes: cidades, viagens, o cachorro, os momentos que os amigos não deixam vocês esquecerem.]",
+      "[TODO: terceiro parágrafo. O pedido, e por que escolheram o México e Val'Quirico para o casamento.]"
+    ],
+    "galleryTitle": "Algumas fotos",
+    "gallery": [
+      "[TODO: descreva a foto 1]",
+      "[TODO: descreva a foto 2]",
+      "[TODO: descreva a foto 3]",
+      "[TODO: descreva a foto 4]",
+      "[TODO: descreva a foto 5]",
+      "[TODO: descreva a foto 6]"
+    ]
+  },
+  "schedule": {
+    "title": "O fim de semana",
+    "lead": "Tudo acontece em Val'Quirico, e dá para ir a pé de um lugar ao outro. Os horários pendentes serão confirmados mais perto da data.",
+    "days": {
+      "fri": "{{date:2027-11-05}}",
+      "sat": "{{date:2027-11-06}}",
+      "sun": "{{date:2027-11-07}}"
+    },
+    "timePending": "[TODO: horário]",
+    "events": {
+      "welcome": {
+        "title": "Rompe-hielo",
+        "desc": "Drinques de boas-vindas na noite anterior ao casamento. Um encontro descontraído para todo mundo se conhecer, assim no sábado ninguém é estranho.",
+        "place": "[TODO: local das boas-vindas]"
+      },
+      "ceremony": {
+        "title": "Cerimônia",
+        "desc": "No pátio da hacienda. Chegue de 20 a 30 minutos antes para encontrar seu lugar com calma.",
+        "place": "Hacienda de Triana, pátio"
+      },
+      "cocktail": {
+        "title": "Coquetel",
+        "desc": "Drinques e petiscos enquanto o sol se põe sobre a vila.",
+        "place": "Hacienda de Triana"
+      },
+      "dinner": {
+        "title": "Jantar e festa",
+        "desc": "Jantar, brindes e uma pista de dança que a gente espera ver cheia.",
+        "place": "Hacienda de Triana, sob a tenda"
+      },
+      "tornaboda": {
+        "title": "Tornaboda",
+        "desc": "Uma tradição dos casamentos mexicanos: uma segunda rodada de comida, já tarde da noite, para a festa não parar.",
+        "place": "Hacienda de Triana"
+      },
+      "end": {
+        "title": "Última música",
+        "desc": "A festa na hacienda termina às {{time:23:00}}.",
+        "place": "Hacienda de Triana"
+      },
+      "after": {
+        "title": "After",
+        "desc": "Para os mais animados, talvez a noite continue num bar da vila. [TODO: confirmar o bar]",
+        "place": "[TODO: bar em Val'Quirico]"
+      },
+      "brunch": {
+        "title": "Brunch de despedida",
+        "desc": "Um último café e um bom café da manhã mexicano antes de cada um seguir viagem.",
+        "place": "[TODO: local do brunch]"
+      }
+    }
+  },
+  "venue": {
+    "title": "O local",
+    "lead": "Hacienda de Triana, dentro da vila de Val'Quirico.",
+    "about": {
+      "title": "Hacienda de Triana",
+      "paragraphs": [
+        "A cerimônia e a festa acontecem no pátio retangular da hacienda, cercado pelos muros e coberto por uma grande tenda estruturada. Não é preciso se deslocar: a gente se casa, janta e dança no mesmo lugar.",
+        "[TODO: algumas linhas sobre por que vocês escolheram a hacienda e o que os convidados precisam saber ao chegar, como a entrada certa.]"
+      ]
+    },
+    "village": {
+      "title": "Val'Quirico",
+      "paragraphs": [
+        "Val'Quirico é uma vila murada, só para pedestres, construída no estilo de um povoado medieval da Toscana nas terras de uma antiga hacienda, a Santa Águeda, no estado de Tlaxcala. Imagine casas de pedra, sacadas de madeira, lampiões e ruas estreitas cheias de restaurantes, cafés e lojinhas.",
+        "É pequena e fácil de percorrer. De qualquer hospedagem dentro da vila dá para chegar à hacienda a pé."
+      ]
+    },
+    "expect": {
+      "title": "O que esperar",
+      "items": [
+        { "title": "Um pátio ao ar livre, sob uma tenda", "text": "Estaremos ao ar livre, mas cobertos. A tenda protege do sol e de alguma chuva inesperada. As noites esfriam, então traga um agasalho." },
+        { "title": "Ruas de pedra por toda parte", "text": "O calçamento é irregular. Salto fino e pedra não combinam. Veja as dicas de sapato na página de traje e clima." },
+        { "title": "Altitude", "text": "A vila fica a cerca de 2.200 metros de altitude. Beba água, vá com calma no primeiro drinque e use protetor solar durante o dia." },
+        { "title": "Tudo a pé", "text": "Os carros ficam na entrada da vila. [TODO: informações sobre estacionamento e desembarque na hacienda]" }
+      ]
+    },
+    "map": {
+      "title": "Onde fica",
+      "address": "Val'Quirico, Carretera Xoxtla–Santa Isabel Tetlatlahuca km 2, Santa Águeda, Tlaxcala, México",
+      "note": "[TODO: ponto exato da Hacienda de Triana no mapa]",
+      "iframeTitle": "Mapa de Val'Quirico, Tlaxcala"
+    }
+  },
+  "travel": {
+    "title": "Como chegar",
+    "lead": "A maioria dos convidados vai voar para a Cidade do México ou para Puebla e seguir por terra. Veja como juntar as peças.",
+    "airports": {
+      "title": "Aeroportos",
+      "items": [
+        {
+          "code": "PBC",
+          "name": "Aeroporto Internacional de Puebla (Hermanos Serdán)",
+          "stat": "20–30 min",
+          "text": "De longe o mais próximo: cerca de {{dist:20}} de Val'Quirico. É um aeroporto pequeno, com poucas rotas, entre elas alguns voos dos Estados Unidos. Vale conferir primeiro."
+        },
+        {
+          "code": "MEX",
+          "name": "Aeroporto Internacional da Cidade do México (Benito Juárez, AICM)",
+          "stat": "1½–2 h",
+          "text": "A maior oferta de voos do Brasil e dos Estados Unidos. São cerca de {{dist:115}} de estrada. O trânsito na saída da Cidade do México pode aumentar bastante o tempo, principalmente nas tardes de sexta."
+        },
+        {
+          "code": "NLU",
+          "name": "Aeroporto Internacional Felipe Ángeles (AIFA)",
+          "stat": "cerca de 2 h",
+          "text": "O aeroporto mais novo da Cidade do México, ao norte da cidade, usado por algumas companhias. [TODO: confirmar o tempo de carro até Val'Quirico; nossa estimativa se baseia no trajeto até Puebla.]"
+        }
+      ]
+    },
+    "ground": {
+      "title": "Do aeroporto a Val'Quirico",
+      "items": [
+        {
+          "title": "Transporte do casamento",
+          "text": "Queremos organizar vans nos principais dias de chegada e de partida. Informe as datas dos seus voos na confirmação de presença para a gente se planejar. [TODO: dias, horários, pontos de encontro e preço das vans]"
+        },
+        {
+          "title": "Motorista particular",
+          "text": "A opção mais confortável saindo da Cidade do México, de porta a porta. [TODO: motorista ou empresa de transfer recomendada, com preços e WhatsApp]"
+        },
+        {
+          "title": "Ônibus até Puebla, depois táxi",
+          "text": "A Estrella Roja tem ônibus diretos do aeroporto da Cidade do México (dos dois terminais) para Puebla. Calcule de 2 a 2½ horas, mais se houver trânsito. De Puebla, Val'Quirico fica a {{dist:22}}, uns 30 minutos de táxi ou carro de aplicativo."
+        },
+        {
+          "title": "Uber e DiDi",
+          "text": "Os dois funcionam em Puebla e no aeroporto de Puebla. Conseguir um carro para sair de Val'Quirico tarde da noite pode demorar, então agende a volta com antecedência quando puder."
+        },
+        {
+          "title": "Carro alugado",
+          "text": "Prático para quem quer passear. Pegue a rodovia pedagiada Cidade do México–Puebla (150D), saia em Xoxtla e você estará a poucos quilômetros. Leve dinheiro ou cartão para os pedágios e evite trajetos longos à noite."
+        }
+      ]
+    },
+    "entry": {
+      "title": "Passaporte e entrada no país",
+      "disclaimer": "As regras de entrada mudam. Este é um resumo de novembro de 2026, feito com carinho, mas não é orientação jurídica. Confirme sempre com o consulado do México ou o Instituto Nacional de Migração (INM), e com a sua companhia aérea, antes de comprar a passagem.",
+      "groups": [
+        {
+          "title": "Brasileiros",
+          "text": "Brasileiros precisam de visto para visitar o México. Desde fevereiro de 2026, o visto eletrônico (e-Visa) voltou a valer para quem chega de avião; solicite pela internet antes de viajar. Você pode estar isento se tiver visto válido ou residência permanente dos Estados Unidos, Canadá, Japão, Reino Unido ou do espaço Schengen. Consulte as regras com antecedência, porque elas já mudaram mais de uma vez."
+        },
+        {
+          "title": "Americanos",
+          "text": "É preciso passaporte válido para viajar de avião. Não é necessário visto para turismo por até 180 dias; o agente define o tempo de permanência na chegada."
+        },
+        {
+          "title": "Mexicanos",
+          "text": "Nada de especial. Leve um documento oficial para os hotéis."
+        },
+        {
+          "title": "Outras nacionalidades",
+          "text": "As exigências dependem do seu passaporte e dos vistos que você já tem. Consulte o INM ou o consulado mexicano mais próximo."
+        }
+      ],
+      "tips": "Seja qual for o seu passaporte, confira se ele estará válido durante toda a viagem, guarde o registro de entrada ou o carimbo que receber na chegada e considere fazer um seguro viagem."
+    }
+  },
+  "stay": {
+    "title": "Hospedagem",
+    "lead": "O mais fácil é dormir dentro de Val'Quirico e fazer tudo a pé. Puebla é uma boa segunda opção para quem prefere ficar numa cidade.",
+    "block": {
+      "title": "Bloqueio de quartos",
+      "text": "[TODO: detalhes do bloqueio de quartos. Hotel, código ou link de reserva, tarifa e data-limite do bloqueio.]"
+    },
+    "inside": {
+      "title": "Dentro de Val'Quirico",
+      "lead": "Hotéis pequenos e muitos lofts e apartamentos, todos a poucos passos da hacienda. Reserve cedo: a vila lota nos fins de semana.",
+      "items": [
+        { "name": "Villa Toscana Val'Quirico Lofts & Suites", "text": "Hotel boutique com lofts e suítes no centro da vila." },
+        { "name": "Hotel Canaria ValQuirico", "text": "Hotel dentro de Val'Quirico. [TODO: confirmar e acrescentar uma nota]" },
+        { "name": "Posada Valquiria ValQuirico", "text": "Pousada pequena dentro de Val'Quirico. [TODO: confirmar e acrescentar uma nota]" },
+        { "name": "Lofts e apartamentos", "text": "Airbnb, Booking e Expedia têm dezenas de lofts particulares dentro da vila, ótimos para famílias ou grupos de amigos." }
+      ]
+    },
+    "nearby": {
+      "title": "Por perto",
+      "items": [
+        { "name": "Puebla, centro histórico", "text": "A cerca de 30 minutos. Ruas coloniais, comida excelente e hotéis para todos os bolsos." },
+        { "name": "Cholula", "text": "Cidade universitária animada, colada em Puebla, com hotéis boutique e uma pirâmide famosa. De 30 a 40 minutos, aproximadamente. [TODO: confirmar o tempo de carro]" },
+        { "name": "Cidade de Tlaxcala", "text": "Tranquila, colorida e a cerca de 30 minutos." }
+      ]
+    },
+    "tip": "Se você ficar fora da vila, combine a volta do sábado à noite antes de a festa começar. [TODO: confirmar se haverá transporte de madrugada para Puebla]"
+  },
+  "explore": {
+    "title": "O que fazer",
+    "lead": "A viagem é longa, então aproveite. Tudo aqui fica a um bate-volta, ou menos, de Val'Quirico.",
+    "note": "Os tempos de carro são aproximados e dependem do trânsito.",
+    "places": [
+      {
+        "name": "Val'Quirico",
+        "distance": "Você está aqui",
+        "text": "Passeie pelas ruelas, escolha um terraço e peça alguma coisa com mezcal. A vila fica mais bonita de manhã cedo e depois que escurece, quando os lampiões se acendem."
+      },
+      {
+        "name": "Cacaxtla e Xochitécatl",
+        "distance": "[TODO: confirmar, uns 20 min]",
+        "text": "Um sítio arqueológico no alto de uma colina, pertinho da vila, conhecido por alguns dos murais pré-hispânicos mais bem preservados do México."
+      },
+      {
+        "name": "Puebla",
+        "distance": "Cerca de 30 min",
+        "text": "Centro histórico Patrimônio Mundial da UNESCO, com uma catedral imensa, a dourada Capela do Rosário, ateliês de cerâmica Talavera e o berço do mole poblano. Aproveite para comer uma cemita."
+      },
+      {
+        "name": "Cholula",
+        "distance": "[TODO: confirmar, uns 30–40 min]",
+        "text": "Suba a Grande Pirâmide, a maior do mundo em volume, até a igreja amarela lá no topo. Em manhãs de céu limpo, o vulcão Popocatépetl toma conta do horizonte."
+      },
+      {
+        "name": "Tlaxcala",
+        "distance": "Cerca de 30 min",
+        "text": "A pequena e calma capital do estado: uma praça principal em tons de laranja e vermelho, murais que contam a história dos tlaxcaltecas e uma das igrejas mais antigas das Américas."
+      },
+      {
+        "name": "Atlixco",
+        "distance": "[TODO: confirmar, cerca de 1 h]",
+        "text": "Uma cidade de flores aos pés do vulcão, com viveiros, terraços e um bom sorvete."
+      },
+      {
+        "name": "Cidade do México",
+        "distance": "Cerca de 2 h",
+        "text": "Se você já vai pousar lá, reserve alguns dias: museus, mercados e alguns dos melhores restaurantes do continente."
+      }
+    ],
+    "muertos": {
+      "title": "Vai chegar antes?",
+      "text": "O Dia dos Mortos é celebrado nos dias 1º e 2 de novembro, no fim de semana anterior ao casamento. Puebla, Tlaxcala e Atlixco se enchem de flores de cempasúchil, altares e desfiles. É um belo motivo para vir alguns dias antes."
+    }
+  },
+  "attire": {
+    "title": "Traje e clima",
+    "lead": "O começo de novembro é época de seca no centro do México: dias claros e quentes, e noites que esfriam rápido depois que o sol se põe, por volta das 18h.",
+    "dress": {
+      "title": "Traje",
+      "text": "[TODO: traje, por exemplo social ou esporte fino, e cores para usar ou evitar.]"
+    },
+    "weather": {
+      "title": "O clima",
+      "text": "Nessa altitude o sol é forte e a sombra é fresca. Chuva em novembro é pouco provável. Depois que escurece, você vai querer um casaco, um xale ou uma echarpe, mesmo debaixo da tenda.",
+      "stats": [
+        { "value": "{{temp:23}}", "label": "numa tarde típica" },
+        { "value": "{{temp:7}}", "label": "numa noite típica" },
+        { "value": "2.200 m", "label": "de altitude" }
+      ],
+      "source": "Com base nas médias climáticas de Puebla, que fica ao lado. Confira a previsão na semana anterior."
+    },
+    "shoes": {
+      "title": "Sapatos",
+      "text": "A vila é toda calçada com pedras. Salto bloco, anabela ou uma sapatilha elegante aguentam a noite inteira. Salto agulha fica preso entre as pedras. Se você não abre mão dele, traga um segundo par para caminhar."
+    },
+    "pack": {
+      "title": "Vale colocar na mala",
+      "items": [
+        "Um agasalho para a noite",
+        "Sapatos confortáveis para os eventos de sexta e domingo",
+        "Protetor solar e óculos escuros",
+        "Um adaptador de tomada. O México usa o padrão americano, de pinos chatos, em 127 V; o plugue brasileiro não encaixa."
+      ]
+    }
+  },
+  "gifts": {
+    "title": "Presentes",
+    "lead": "Você vai cruzar fronteiras para estar com a gente. Esse é o presente.",
+    "text": "De verdade, ter você lá é tudo o que queremos. Se mesmo assim quiser nos presentear, uma contribuição para a nossa lua de mel vai nos deixar muito felizes.",
+    "fund": {
+      "title": "Lua de mel",
+      "text": "[TODO: link para a lista de presentes ou o fundo de lua de mel que aceite pagamentos em USD, BRL e MXN. Opções a considerar: um site de lista com cartões internacionais, mais uma chave Pix para convidados no Brasil e uma conta para transferência (SPEI) para convidados no México.]",
+      "cta": "Abrir a lista de lua de mel"
+    }
+  },
+  "rsvp": {
+    "title": "Confirme sua presença",
+    "lead": "Um formulário por família já basta. Leva uns dois minutos.",
+    "deadline": "Por favor, responda até {{deadline}}.",
+    "notConnected": "[TODO: o formulário ainda não está conectado à planilha do Google. Veja o README, seção \"RSVP setup\".]",
+    "fields": {
+      "name": "Seu nome completo",
+      "email": "E-mail",
+      "emailHint": "Para a gente mandar novidades.",
+      "phone": "WhatsApp ou telefone",
+      "attending": "Você vem?",
+      "yes": "Sim, com muita alegria",
+      "no": "Infelizmente não vou poder ir",
+      "guests": "Número de pessoas, contando você",
+      "guestNames": "Nome de todos do seu grupo",
+      "events": "De quais eventos você vai participar?",
+      "eventWelcome": "Sexta: rompe-hielo",
+      "eventWedding": "Sábado: casamento",
+      "eventBrunch": "Domingo: brunch",
+      "dietary": "Restrições alimentares ou alergias",
+      "dietaryHint": "Vegetariano, vegano, sem glúten, alergias. Diga para quem vale.",
+      "language": "Idioma de preferência",
+      "arrival": "Data de chegada",
+      "departure": "Data de partida",
+      "datesHint": "Ajuda a organizar o transporte. Pode ser uma estimativa.",
+      "airport": "Qual aeroporto você vai usar?",
+      "airportUnknown": "Ainda não sei",
+      "shuttle": "Tenho interesse no transporte do casamento",
+      "message": "Mais alguma coisa que a gente precisa saber?",
+      "submit": "Enviar resposta",
+      "sending": "Enviando…"
+    },
+    "legends": {
+      "who": "Quem vem",
+      "events": "O fim de semana",
+      "travel": "Viagem",
+      "extras": "Detalhes"
+    },
+    "success": {
+      "title": "Obrigado!",
+      "yes": "Recebemos sua resposta e mal podemos esperar para ver você em Val'Quirico.",
+      "no": "Recebemos sua resposta. Vamos sentir sua falta e brindar por você."
+    },
+    "error": "Algo deu errado e sua resposta não foi enviada. Tente de novo ou escreva direto para a gente.",
+    "required": "Preencha este campo.",
+    "privacy": "Usamos esses dados só para organizar o casamento."
+  },
+  "faq": {
+    "title": "Dúvidas frequentes",
+    "lead": "A parte prática. Se a sua dúvida não estiver aqui, escreva para a gente.",
+    "items": [
+      {
+        "q": "Posso levar acompanhante?",
+        "a": "[TODO: regra para acompanhantes]"
+      },
+      {
+        "q": "Crianças são bem-vindas?",
+        "a": "[TODO: regra para crianças, e se é possível contratar babá]"
+      },
+      {
+        "q": "Que moeda levar? Dinheiro ou cartão?",
+        "a": "A moeda do México é o peso (MXN). Cartões são aceitos na maioria dos hotéis e restaurantes, inclusive em Val'Quirico. Leve algum dinheiro, algo entre {{mxn:1000}} e {{mxn:2000}} em notas pequenas, para gorjetas, táxis, pedágios e feirinhas. Os caixas eletrônicos de bancos têm o melhor câmbio; se a máquina oferecer a conversão para a sua moeda, recuse."
+      },
+      {
+        "q": "Como funciona a gorjeta?",
+        "a": "Nos restaurantes, o costume é deixar de 10 a 15%, e normalmente isso não vem incluído na conta. Ao pagar com cartão, diga a porcentagem ao garçom antes de ele passar a maquininha. Carregadores, manobristas e quem ajuda com as malas também agradecem alguns pesos."
+      },
+      {
+        "q": "Meu celular vai funcionar? E o Wi-Fi?",
+        "a": "Consulte sua operadora sobre roaming no México. Um eSIM de viagem ou um chip pré-pago local (a Telcel tem a melhor cobertura) costuma sair mais barato. Hotéis e a maioria dos restaurantes têm Wi-Fi. Assim como no Brasil, no México todo mundo usa WhatsApp."
+      },
+      {
+        "q": "É seguro?",
+        "a": "Val'Quirico é um empreendimento privado, tranquilo e feito para andar a pé, e Puebla e Tlaxcala recebem muitos turistas. Tenha os mesmos cuidados de qualquer viagem: use táxis credenciados ou carros de aplicativo, evite dirigir longas distâncias à noite e não deixe objetos de valor à vista. Vale também ler as orientações do Itamaraty para quem viaja ao México."
+      },
+      {
+        "q": "Posso beber água da torneira?",
+        "a": "Prefira água mineral ou filtrada, que é o que restaurantes e hotéis servem."
+      },
+      {
+        "q": "O local é acessível?",
+        "a": "As ruas da vila são de pedra e irregulares, o que dificulta a vida de quem usa cadeira de rodas, andador ou carrinho de bebê. [TODO: confirmar acesso sem degraus, ponto de desembarque e banheiros acessíveis na hacienda.] Conte o que você precisa na confirmação de presença e a gente providencia."
+      },
+      {
+        "q": "E se chover?",
+        "a": "Novembro é época de seca, então chuva é pouco provável. Se chover, a festa inteira acontece debaixo de uma grande tenda."
+      },
+      {
+        "q": "Qual é o fuso horário?",
+        "a": "O centro do México fica em UTC−6 o ano todo, sem horário de verão. São três horas a menos que o horário de Brasília."
+      },
+      {
+        "q": "Quando devo chegar e ir embora?",
+        "a": "Para aproveitar tudo, chegue até a tarde de {{date:2027-11-05}} e vá embora no domingo à tarde ou depois. Se o seu voo sair da Cidade do México no domingo, escolha um horário à noite."
+      },
+      {
+        "q": "Posso tirar fotos durante a cerimônia?",
+        "a": "[TODO: regra sobre celulares e fotos na cerimônia]"
+      }
+    ],
+    "contact": {
+      "title": "Com quem falar",
+      "text": "Dúvidas, mudanças de planos, voo cancelado: escreva para a gente quando quiser.",
+      "email": "Mandar e-mail",
+      "whatsapp": "Chamar no WhatsApp",
+      "emailTodo": "[TODO: e-mail de contato]",
+      "whatsappTodo": "[TODO: número de WhatsApp]",
+      "dayOf": "No fim de semana do casamento: [TODO: nome e telefone de um coordenador ou familiar para quem os convidados possam ligar]"
+    }
+  },
+  "footer": {
+    "line": "Com carinho, Luis & Pedro",
+    "place": "Val'Quirico, Tlaxcala · {{date:2027-11-06}}"
+  }
+}

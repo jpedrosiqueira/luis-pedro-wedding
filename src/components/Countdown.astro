@@ -1,0 +1,36 @@
+---
+import { type Lang, useT } from '../i18n';
+import { site } from '../config/site';
+const { lang } = Astro.props as { lang: Lang };
+const c = useT(lang).home.countdown;
+// Rendered at build time so the numbers are there before any script runs.
+const ms = Math.max(0, new Date(site.weddingStart).getTime() - Date.now());
+const parts = [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
+const labels = [c.days, c.hours, c.minutes, c.seconds];
+---
+<div class="countdown" data-countdown={site.weddingStart} data-done={c.done}>
+  <h2 class="label" style="font-family: var(--font-body)">{c.title}</h2>
+  <div class="countdown__grid" role="timer" aria-live="off">
+    {parts.map((n, i) => (
+      <div class="countdown__unit">
+        <span class="countdown__num" data-unit={i}>{i === 0 ? n : String(n).padStart(2, '0')}</span>
+        <span class="label">{labels[i]}</span>
+      </div>
+    ))}
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var el = document.querySelector('[data-countdown]');
+    if (!el) return;
+    var target = new Date(el.getAttribute('data-countdown')).getTime();
+    var nums = el.querySelectorAll('[data-unit]');
+    function tick() {
+      var ms = target - Date.now();
+      if (ms <= 0) { el.querySelector('.countdown__grid').textContent = el.getAttribute('data-done'); el.querySelector('.countdown__grid').className = 'serif'; clearInterval(timer); return; }
+      var v = [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
+      for (var i = 0; i < 4; i++) { var s = i === 0 ? String(v[i]) : ('0' + v[i]).slice(-2); if (nums[i].textContent !== s) nums[i].textContent = s; }
+    }
+    var timer = setInterval(tick, 1000); tick();
+  })();
+</script>

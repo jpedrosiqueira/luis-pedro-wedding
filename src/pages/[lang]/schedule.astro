@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { langPaths, type Lang, useT, rich, fmtTime, fmtDate } from '../../i18n';
+import { days, events } from '../../data/schedule';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const s = t.schedule;
+const ev = s.events as Record<string, { title: string; desc: string; place: string }>;
+---
+<Layout lang={lang} pageKey="schedule" slug="schedule" title={s.title} description={s.lead}>
+  <PageHero lang={lang} pageKey="schedule" title={s.title} lead={s.lead} />
+  {days.map((d) => (
+    <section class:list={['day', d.id === 'sat' && 'dusk on-dusk']} style={d.id !== 'sat' ? 'border-top: 1px solid var(--color-border)' : ''}>
+      <div class="wrap">
+        <header class="day__head">
+          <p class="label">{d.date.slice(8)} · 11 · 2027</p>
+          <h2><time datetime={d.date}>{fmtDate(lang, d.date, { year: undefined })}</time></h2>
+        </header>
+        <ol class="timeline">
+          {events.filter((e) => e.day === d.id).map((e) => (
+            <li>
+              <p class="timeline__time">
+                {e.time ? <time datetime={`${d.date}T${e.time}`}>{fmtTime(lang, e.time)}</time> : <Fragment set:html={rich(lang, s.timePending)} />}
+              </p>
+              <h3>{ev[e.id].title}{e.tentative && <span class="tag">{t.common.tbc}</span>}</h3>
+              <p set:html={rich(lang, ev[e.id].desc)} />
+              <p class="timeline__place" set:html={rich(lang, ev[e.id].place)} />
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  ))}
+</Layout>

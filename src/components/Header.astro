@@ -1,0 +1,36 @@
+---
+import { pages, href, type Lang, useT } from '../i18n';
+import { site } from '../config/site';
+import LangSwitcher from './LangSwitcher.astro';
+const { lang, pageKey, slug = '' } = Astro.props as { lang: Lang; pageKey: string; slug?: string };
+const t = useT(lang);
+const nav = t.nav as Record<string, string>;
+---
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <a class="monogram" href={href(lang)} title={`${site.couple.a} & ${site.couple.b}`}>
+      {site.couple.a[0]}<span>&amp;</span>{site.couple.b[0]}<b class="visually-hidden">: {nav.home}</b>
+    </a>
+    <LangSwitcher lang={lang} slug={slug} />
+    <a class="btn btn--small masthead__rsvp" href={href(lang, 'rsvp')}>{nav.rsvp}</a>
+    <details class="menu">
+      <summary><span>{nav.menu}</span><span class="menu__icon" aria-hidden="true"></span></summary>
+      <nav class="menu__panel" aria-label={nav.main}>
+        <ul>
+          <li><a href={href(lang)} aria-current={pageKey === 'home' ? 'page' : undefined}><span class="num" aria-hidden="true">00</span>{nav.home}</a></li>
+          {pages.map((p, i) => (
+            <li><a href={href(lang, p.slug)} aria-current={pageKey === p.key ? 'page' : undefined}><span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{nav[p.key]}</a></li>
+          ))}
+        </ul>
+        <a class="btn" href={href(lang, 'rsvp')}>{nav.rsvp}</a>
+      </nav>
+    </details>
+  </div>
+  <nav class="masthead__nav" aria-label={nav.main}>
+    <ul class="wrap">
+      {pages.map((p) => (
+        <li><a href={href(lang, p.slug)} aria-current={pageKey === p.key ? 'page' : undefined}>{nav[p.key]}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>

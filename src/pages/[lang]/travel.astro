@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { langPaths, type Lang, useT, rich } from '../../i18n';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const v = t.travel;
+---
+<Layout lang={lang} pageKey="travel" slug="travel" title={v.title} description={v.lead}>
+  <PageHero lang={lang} pageKey="travel" title={v.title} lead={v.lead} />
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{v.airports.title}</h2><p class="muted small">{t.common.lastChecked}</p></div>
+      <ul class="rows rows--airports">
+        {v.airports.items.map((a) => (
+          <li>
+            <span class="code" translate="no">{a.code}</span>
+            <span class="stat">{a.stat}</span>
+            <div class="rest"><h3>{a.name}</h3><p set:html={rich(lang, a.text)} /></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{v.ground.title}</h2></div>
+      <ul class="rows" data-reveal>
+        {v.ground.items.map((it) => <li><h3>{it.title}</h3><p set:html={rich(lang, it.text)} /></li>)}
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{v.entry.title}</h2></div>
+      <div class="stack">
+        <p class="callout" role="note">{v.entry.disclaimer}</p>
+        <ul class="rows">
+          {v.entry.groups.map((g) => <li><h3>{g.title}</h3><p set:html={rich(lang, g.text)} /></li>)}
+        </ul>
+        <p class="muted">{v.entry.tips}</p>
+      </div>
+    </div>
+  </section>
+</Layout>

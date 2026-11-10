@@ -1,0 +1,48 @@
+---
+// The bare address ("/") sends each guest to their language.
+import { site } from '../config/site';
+import { locales, langs } from '../i18n';
+import en from '../i18n/en.json';
+const abs = (p: string) => new URL(p, Astro.site).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (function () {
+        var all = ['en', 'pt', 'es'], want = null;
+        try { var s = localStorage.getItem('lang'); if (all.indexOf(s) > -1) want = s; } catch (e) {}
+        if (!want) {
+          var list = navigator.languages || [navigator.language || ''];
+          for (var i = 0; i < list.length; i++) {
+            var c = String(list[i]).slice(0, 2).toLowerCase();
+            if (all.indexOf(c) > -1) { want = c; break; }
+          }
+        }
+        location.replace('/' + (want || 'en') + '/' + location.search + location.hash);
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
+    <title>{en.meta.titleSuffix}</title>
+    <meta name="description" content={en.meta.description} />
+    {site.noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={en.meta.titleSuffix} />
+    <meta property="og:description" content={en.meta.description} />
+    <meta property="og:url" content={abs('/')} />
+    <meta property="og:image" content={abs('/og/en.jpg')} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f6efe4;color:#2b2019;font:1.1rem Georgia,serif;text-align:center}a{color:#9e4a2b;margin:0 .6rem}</style>
+  </head>
+  <body>
+    <main>
+      <h1 style="font-weight:400">Luis &amp; Pedro</h1>
+      <p>{langs.map((l) => <a href={`/${l}/`} lang={locales[l].html}>{locales[l].label}</a>)}</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { langPaths, type Lang, useT, rich, locales, langs } from '../../i18n';
+import { site } from '../../config/site';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const r = t.rsvp;
+const f = r.fields;
+const connected = Boolean(site.rsvp.endpoint);
+---
+<Layout lang={lang} pageKey="rsvp" slug="rsvp" title={r.title} description={r.lead} band={false}>
+  <PageHero lang={lang} pageKey="rsvp" title={r.title} lead={r.lead} />
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <p class="prose" style="margin-bottom: var(--space-8)" set:html={rich(lang, r.deadline)} />
+      {!connected && <p class="callout" style="margin-bottom: var(--space-8); max-width: 40rem" set:html={rich(lang, r.notConnected)} />}
+
+      <form class="form" id="rsvp-form" method="post" action={site.rsvp.endpoint || undefined}
+        data-endpoint={site.rsvp.endpoint} data-error={r.error} data-sending={f.sending}>
+        <input type="hidden" name="site_language" value={lang} />
+        <p class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></p>
+
+        <fieldset>
+          <legend><h2>{r.legends.who}</h2></legend>
+          <div class="field">
+            <label for="name">{f.name}</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="email">{f.email} <span class="muted">({t.common.optional})</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" aria-describedby="email-hint" />
+              <span class="hint" id="email-hint">{f.emailHint}</span>
+            </div>
+            <div class="field">
+              <label for="phone">{f.phone} <span class="muted">({t.common.optional})</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+            </div>
+          </div>
+          <div class="field" role="radiogroup" aria-labelledby="attending-label">
+            <span class="field__label" id="attending-label">{f.attending}</span>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="attending" value="yes" required /> {f.yes}</label>
+              <label class="choice"><input type="radio" name="attending" value="no" /> {f.no}</label>
+            </div>
+          </div>
+          <div class="field-row" data-if-attending>
+            <div class="field">
+              <label for="guests">{f.guests}</label>
+              <input id="guests" name="guests" type="number" min="1" max="10" value="1" inputmode="numeric" />
+            </div>
+            <div class="field">
+              <label for="guest_names">{f.guestNames}</label>
+              <input id="guest_names" name="guest_names" type="text" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset data-if-attending>
+          <legend><h2>{r.legends.events}</h2></legend>
+          <div class="field" role="group" aria-labelledby="events-label">
+            <span class="field__label" id="events-label">{f.events}</span>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="event_welcome" value="yes" checked /> {f.eventWelcome}</label>
+              <label class="choice"><input type="checkbox" name="event_wedding" value="yes" checked /> {f.eventWedding}</label>
+              <label class="choice"><input type="checkbox" name="event_brunch" value="yes" checked /> {f.eventBrunch}</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="dietary">{f.dietary}</label>
+            <textarea id="dietary" name="dietary" rows="2" aria-describedby="dietary-hint"></textarea>
+            <span class="hint" id="dietary-hint">{f.dietaryHint}</span>
+          </div>
+        </fieldset>
+
+        <fieldset data-if-attending>
+          <legend><h2>{r.legends.travel}</h2></legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="arrival">{f.arrival}</label>
+              <input id="arrival" name="arrival" type="date" min="2027-10-20" max="2027-11-06" />
+            </div>
+            <div class="field">
+              <label for="departure">{f.departure}</label>
+              <input id="departure" name="departure" type="date" min="2027-11-06" max="2027-11-30" aria-describedby="dates-hint" />
+            </div>
+          </div>
+          <span class="hint muted small" id="dates-hint">{f.datesHint}</span>
+          <div class="field">
+            <label for="airport">{f.airport}</label>
+            <select id="airport" name="airport">
+              <option value="">{f.airportUnknown}</option>
+              {t.travel.airports.items.map((a) => <option value={a.code}>{a.code} · {a.name}</option>)}
+            </select>
+          </div>
+          <label class="choice"><input type="checkbox" name="shuttle" value="yes" /> {f.shuttle}</label>
+        </fieldset>
+
+        <fieldset>
+          <legend><h2>{r.legends.extras}</h2></legend>
+          <div class="field">
+            <label for="language">{f.language}</label>
+            <select id="language" name="language">
+              {langs.map((l) => <option value={locales[l].html} selected={l === lang}>{locales[l].label}</option>)}
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">{f.message} <span class="muted">({t.common.optional})</span></label>
+            <textarea id="message" name="message" rows="3"></textarea>
+          </div>
+        </fieldset>
+
+        <div>
+          <button class="btn" type="submit">{f.submit}</button>
+          <p class="muted small" style="margin-top: var(--space-4)">{r.privacy}</p>
+          <p class="form__status" role="alert" style="margin-top: var(--space-4)"></p>
+        </div>
+      </form>
+
+      <div id="rsvp-done" class="prose" hidden tabindex="-1">
+        <h2>{r.success.title}</h2>
+        <p data-yes style="font-size: var(--text-lg)">{r.success.yes}</p>
+        <p data-no style="font-size: var(--text-lg)">{r.success.no}</p>
+      </div>
+    </div>
+  </section>
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('rsvp-form');
+      var done = document.getElementById('rsvp-done');
+      var status = form.querySelector('.form__status');
+      var button = form.querySelector('button[type=submit]');
+      var label = button.textContent;
+
+      function sync() {
+        var no = form.elements.attending.value === 'no';
+        form.querySelectorAll('[data-if-attending]').forEach(function (el) {
+          el.hidden = no;
+          if (el.tagName === 'FIELDSET') el.disabled = no;
+        });
+      }
+      form.addEventListener('change', function (e) { if (e.target.name === 'attending') sync(); });
+      sync();
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var endpoint = form.getAttribute('data-endpoint');
+        var attending = form.elements.attending.value;
+        if (!endpoint) { status.textContent = form.getAttribute('data-error'); return; }
+        status.textContent = '';
+        button.disabled = true; button.textContent = form.getAttribute('data-sending');
+        fetch(endpoint, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (!data || !data.ok) throw new Error('rejected');
+            form.hidden = true; done.hidden = false;
+            done.querySelector(attending === 'no' ? '[data-yes]' : '[data-no]').hidden = true;
+            done.focus(); done.scrollIntoView({ block: 'center' });
+          })
+          .catch(function () {
+            status.textContent = form.getAttribute('data-error');
+            button.disabled = false; button.textContent = label;
+          });
+      });
+    })();
+  </script>
+</Layout>

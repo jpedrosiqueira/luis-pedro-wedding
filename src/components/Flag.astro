@@ -1,0 +1,27 @@
+---
+// Small simplified flags, drawn inline so they look the same on every device
+// (emoji flags do not render on Windows).
+const { code } = Astro.props as { code: 'en' | 'pt' | 'es' };
+---
+{code === 'en' && (
+  <svg viewBox="0 0 20 14" aria-hidden="true" focusable="false">
+    <rect width="20" height="14" fill="#fff" />
+    <g fill="#b22234"><rect width="20" height="2" /><rect y="4" width="20" height="2" /><rect y="8" width="20" height="2" /><rect y="12" width="20" height="2" /></g>
+    <rect width="9" height="8" fill="#3c3b6e" />
+  </svg>
+)}
+{code === 'pt' && (
+  <svg viewBox="0 0 20 14" aria-hidden="true" focusable="false">
+    <rect width="20" height="14" fill="#009c3b" />
+    <path d="M10 1.8 17.6 7 10 12.2 2.4 7z" fill="#ffdf00" />
+    <circle cx="10" cy="7" r="3" fill="#002776" />
+  </svg>
+)}
+{code === 'es' && (
+  <svg viewBox="0 0 20 14" aria-hidden="true" focusable="false">
+    <rect width="20" height="14" fill="#fff" />
+    <rect width="6.67" height="14" fill="#006847" />
+    <rect x="13.33" width="6.67" height="14" fill="#ce1126" />
+    <circle cx="10" cy="7" r="1.7" fill="#8a6a3b" />
+  </svg>
+)}

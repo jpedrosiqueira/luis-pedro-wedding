@@ -1,0 +1,22 @@
+---
+import { locales, langs, type Lang, useT } from '../i18n';
+import Flag from './Flag.astro';
+const { lang, slug = '' } = Astro.props as { lang: Lang; slug?: string };
+const t = useT(lang);
+---
+<nav class="langs" aria-label={t.nav.language}>
+  {langs.map((l) => (
+    <a
+      href={`/${l}/${slug ? slug + '/' : ''}`}
+      hreflang={locales[l].html}
+      lang={locales[l].html}
+      data-lang={l}
+      aria-current={l === lang ? 'true' : undefined}
+      title={locales[l].label}
+    >
+      <Flag code={l} />
+      <span class="langs__code" aria-hidden="true">{locales[l].short}</span>
+      <span class="langs__name">{locales[l].label}</span>
+    </a>
+  ))}
+</nav>

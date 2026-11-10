@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Countdown from '../../components/Countdown.astro';
+import { langPaths, type Lang, useT, fill, rich, href, pages, fmtDate } from '../../i18n';
+import { site } from '../../config/site';
+import { googleCalendarUrl } from '../../lib/calendar';
+import { days } from '../../data/schedule';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const h = t.home;
+const nav = t.nav as Record<string, string>;
+const idx = h.index as Record<string, string>;
+const weekend = h.weekend as Record<string, string>;
+---
+<Layout lang={lang} pageKey="home">
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="label">{h.eyebrow}</p>
+        <h1 class="hero__names"><span>{site.couple.a}</span><span><span class="amp">&amp;</span> {site.couple.b}</span></h1>
+        <p class="hero__date"><time datetime="2027-11-06">{fill(lang, h.date)}</time></p>
+        <p class="label hero__place">{h.place}</p>
+        <p class="hero__intro" set:html={rich(lang, h.intro)} />
+        <div class="hero__actions">
+          <a class="btn" href={href(lang, 'rsvp')}>{t.common.rsvp}</a>
+          <a class="btn btn--ghost" href={href(lang, 'schedule')}>{nav.schedule}</a>
+        </div>
+        <p class="hero__cal">
+          <span class="label">{h.calendar.title}</span>
+          <a href={href(lang) + 'wedding.ics'} download="luis-pedro.ics">{h.calendar.ics}</a>
+          <a href={googleCalendarUrl(lang)} target="_blank" rel="noopener">{h.calendar.google}</a>
+        </p>
+      </div>
+      <Photo name="hero" alt={h.heroAlt} lang={lang} arch eager class="hero__photo" ratio="4 / 5" sizes="(min-width: 56rem) 38vw, 26rem" />
+    </div>
+  </section>
+
+  <section class="section section--tight dusk on-dusk">
+    <div class="wrap"><Countdown lang={lang} /></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="split__head" data-reveal>
+          <h2>{weekend.title}</h2>
+          <p class="muted">{weekend.lead}</p>
+          <p><a class="arrow-link" href={href(lang, 'schedule')}>{weekend.link}</a></p>
+        </div>
+        <ol class="days" data-reveal>
+          {days.map((d) => (
+            <li>
+              <span class="days__num" aria-hidden="true">{d.date.slice(8)}</span>
+              <div class="days__body">
+                <p class="label"><time datetime={d.date}>{fmtDate(lang, d.date, { year: undefined })}</time></p>
+                <p class="serif" style="font-size: var(--text-lg); line-height: 1.25">{weekend[d.id]}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="split__head" data-reveal>
+          <h2>{h.gettingThere.title}</h2>
+          <p class="muted">{h.gettingThere.lead}</p>
+        </div>
+        <div data-reveal>
+          <Photo name="home-village" alt="Val'Quirico" lang={lang} ratio="16 / 9" sizes="(min-width: 56rem) 60vw, 92vw" />
+          <dl class="figures">
+            <div><dt class="figure__value">{h.gettingThere.pbcValue}</dt><dd class="figure__label">{h.gettingThere.pbcLabel}</dd></div>
+            <div><dt class="figure__value">{h.gettingThere.mexValue}</dt><dd class="figure__label">{h.gettingThere.mexLabel}</dd></div>
+          </dl>
+          <a class="arrow-link" href={href(lang, 'travel')}>{h.gettingThere.link}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 data-reveal>{idx.title}</h2>
+      <ol class="index">
+        {pages.map((p, i) => (
+          <li>
+            <a href={href(lang, p.slug)}>
+              <span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="index__name">{nav[p.key]}</span>
+              <span class="index__desc">{idx[p.key]}</span>
+              <span class="index__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Layout>

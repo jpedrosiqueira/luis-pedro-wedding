@@ -1,0 +1,24 @@
+---
+import { pages, href, type Lang, useT, fill } from '../i18n';
+import { site } from '../config/site';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const nav = t.nav as Record<string, string>;
+---
+<footer class="footer on-dusk">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <p class="footer__mark">{site.couple.a} <span>&amp;</span> {site.couple.b}</p>
+        <p class="muted" style="margin-top: var(--space-4)">{t.footer.line}</p>
+      </div>
+      <nav aria-label={nav.main}>
+        <ul class="footer__nav">
+          {pages.map((p) => <li><a href={href(lang, p.slug)}>{nav[p.key]}</a></li>)}
+          <li><a href={href(lang, 'rsvp')}>{nav.rsvp}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer__base"><span>{fill(lang, t.footer.place)}</span></p>
+  </div>
+</footer>

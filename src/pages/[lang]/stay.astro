@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { langPaths, type Lang, useT, rich } from '../../i18n';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const s = t.stay;
+---
+<Layout lang={lang} pageKey="stay" slug="stay" title={s.title} description={s.lead}>
+  <PageHero lang={lang} pageKey="stay" title={s.title} lead={s.lead} photo="stay" />
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{s.block.title}</h2></div>
+      <p class="callout" set:html={rich(lang, s.block.text)} />
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{s.inside.title}</h2><p class="muted">{s.inside.lead}</p></div>
+      <ul class="rows" data-reveal>
+        {s.inside.items.map((it) => <li><h3 translate="no">{it.name}</h3><p set:html={rich(lang, it.text)} /></li>)}
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__head"><h2>{s.nearby.title}</h2></div>
+      <div class="stack">
+        <ul class="rows" data-reveal>
+          {s.nearby.items.map((it) => <li><h3>{it.name}</h3><p set:html={rich(lang, it.text)} /></li>)}
+        </ul>
+        <p class="muted" set:html={rich(lang, s.tip)} />
+      </div>
+    </div>
+  </section>
+</Layout>

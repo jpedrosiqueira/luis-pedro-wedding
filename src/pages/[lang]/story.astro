@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Photo from '../../components/Photo.astro';
+import { langPaths, type Lang, useT, rich, plain } from '../../i18n';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useT(lang);
+const s = t.story;
+---
+<Layout lang={lang} pageKey="story" slug="story" title={s.title} description={s.lead}>
+  <PageHero lang={lang} pageKey="story" title={s.title} lead={s.lead} photo="story-cover" />
+  <section class="section">
+    <div class="wrap prose" style="font-size: var(--text-lg); line-height: 1.55">
+      {s.paragraphs.map((p) => <p set:html={rich(lang, p)} />)}
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2 data-reveal>{s.galleryTitle}</h2>
+      <div class="gallery" style="margin-top: var(--space-8)">
+        {s.gallery.map((alt, i) => <Photo name={`story-${i + 1}`} alt={plain(lang, alt)} lang={lang} ratio={i % 3 === 1 ? '3 / 4' : '4 / 5'} sizes="(min-width: 56rem) 30vw, 46vw" />)}
+      </div>
+    </div>
+  </section>
+</Layout>
