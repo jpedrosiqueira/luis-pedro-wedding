@@ -5,13 +5,14 @@ import Intro from '../../components/Intro.astro';
 import Feature from '../../components/Feature.astro';
 import Ornament from '../../components/Ornament.astro';
 import { langPaths, type Lang, useT, rich } from '../../i18n';
+import { credits } from '../../data/photo-credits';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const t = useT(lang);
 const x = t.explore;
 // Photo file names and line drawings, in the same order as the places in the language files.
-const photos = ['explore-valquirico', 'explore-cacaxtla', 'explore-puebla', 'explore-cholula', 'explore-tlaxcala', 'explore-atlixco', 'explore-mexico-city'];
-const art = ['lantern', 'agave', 'arch', 'cypress', 'olive', 'marigold', 'agave'];
+const photos = ['explore-valquirico', 'explore-mexico-city', 'explore-puebla', 'explore-cholula', 'explore-cacaxtla', 'explore-tlaxcala', 'explore-atlixco'];
+const art = ['lantern', 'olive', 'arch', 'cypress', 'agave', 'olive', 'marigold'];
 ---
 <Layout lang={lang} pageKey="explore" slug="things-to-do" title={x.title} description={x.lead}>
   <Banner lang={lang} title={x.title} photo="explore" />
@@ -33,4 +34,19 @@ const art = ['lantern', 'agave', 'arch', 'cypress', 'olive', 'marigold', 'agave'
       <p class="intro__lead" style="margin-top: var(--space-4)" set:html={rich(lang, x.muertos.text)} />
     </div>
   </section>
+  {credits.length > 0 && (
+    <section class="section section--flush">
+      <div class="wrap credits">
+        <h2>{x.credits.title}</h2>
+        <p>{x.credits.note}</p>
+        <ul>
+          {credits.map((c) => (
+            <li>
+              <a class="text-link" href={c.page} rel="noopener">{c.subject}</a>: {c.author}, <a class="text-link" href={c.licenseUrl} rel="noopener license">{c.license}</a>{c.changes && <>, {c.changes}</>}, {x.credits.via}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
 </Layout>

@@ -348,9 +348,9 @@
         "text": "Wander the lanes, pick a terrace, order something with mezcal. The village is at its best early in the morning and after dark, when the lanterns come on."
       },
       {
-        "name": "Cacaxtla & Xochitécatl",
-        "distance": "[TODO: confirm, about 20 min]",
-        "text": "A hilltop archaeological site close to the village, known for some of the best-preserved pre-Hispanic murals in Mexico."
+        "name": "Mexico City",
+        "distance": "About 2 h",
+        "text": "If you are landing there anyway, give it a few days: museums, markets, and some of the best restaurants on the continent."
       },
       {
         "name": "Puebla",
@@ -363,6 +363,11 @@
         "text": "Climb the Great Pyramid, the largest by volume in the world, to the yellow church on top. On a clear morning the Popocatépetl volcano fills the horizon."
       },
       {
+        "name": "Cacaxtla & Xochitécatl",
+        "distance": "[TODO: confirm, about 20 min]",
+        "text": "A hilltop archaeological site close to the village, known for some of the best-preserved pre-Hispanic murals in Mexico."
+      },
+      {
         "name": "Tlaxcala",
         "distance": "About 30 min",
         "text": "The small, calm state capital: an orange-and-red main square, murals that tell the history of the Tlaxcaltecas, and one of the oldest churches in the Americas."
@@ -371,18 +376,18 @@
         "name": "Atlixco",
         "distance": "[TODO: confirm, about 1 h]",
         "text": "A flower-growing town at the foot of the volcano, with nurseries, rooftop terraces and good ice cream."
-      },
-      {
-        "name": "Mexico City",
-        "distance": "About 2 h",
-        "text": "If you are landing there anyway, give it a few days: museums, markets, and some of the best restaurants on the continent."
       }
     ],
     "muertos": {
       "title": "Arriving early?",
       "text": "Day of the Dead is celebrated on November 1 and 2, the weekend before the wedding. Puebla, Tlaxcala and Atlixco fill with marigolds, altars and parades. It is a beautiful reason to come a few days ahead."
     },
-    "driveLabel": "By car from Val'Quirico"
+    "driveLabel": "By car from Val'Quirico",
+    "credits": {
+      "title": "Photo credits",
+      "note": "Photos on this page are from Wikimedia Commons, used under the licences shown.",
+      "via": "via Wikimedia Commons"
+    }
   },
   "attire": {
     "title": "Dress & weather",

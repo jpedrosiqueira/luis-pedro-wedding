@@ -348,9 +348,9 @@
         "text": "Piérdanse por los callejones, escojan una terraza y pidan algo con mezcal. El pueblo luce más temprano en la mañana y al anochecer, cuando se encienden los faroles."
       },
       {
-        "name": "Cacaxtla y Xochitécatl",
-        "distance": "[TODO: confirmar, unos 20 min]",
-        "text": "Una zona arqueológica en lo alto de un cerro, muy cerca del pueblo, conocida por algunos de los murales prehispánicos mejor conservados de México."
+        "name": "Ciudad de México",
+        "distance": "Unas 2 h",
+        "text": "Si de todos modos aterrizan ahí, regálense unos días: museos, mercados y algunos de los mejores restaurantes del continente."
       },
       {
         "name": "Puebla",
@@ -363,6 +363,11 @@
         "text": "Suban la Gran Pirámide, la más grande del mundo por volumen, hasta la iglesia amarilla de la cima. En una mañana despejada, el Popocatépetl llena el horizonte."
       },
       {
+        "name": "Cacaxtla y Xochitécatl",
+        "distance": "[TODO: confirmar, unos 20 min]",
+        "text": "Una zona arqueológica en lo alto de un cerro, muy cerca del pueblo, conocida por algunos de los murales prehispánicos mejor conservados de México."
+      },
+      {
         "name": "Tlaxcala",
         "distance": "Unos 30 min",
         "text": "La pequeña y tranquila capital del estado: un zócalo en tonos naranjas y rojos, murales que cuentan la historia de los tlaxcaltecas y una de las iglesias más antiguas de América."
@@ -371,18 +376,18 @@
         "name": "Atlixco",
         "distance": "[TODO: confirmar, alrededor de 1 h]",
         "text": "Un pueblo de flores al pie del volcán, con viveros, terrazas y buenas nieves."
-      },
-      {
-        "name": "Ciudad de México",
-        "distance": "Unas 2 h",
-        "text": "Si de todos modos aterrizan ahí, regálense unos días: museos, mercados y algunos de los mejores restaurantes del continente."
       }
     ],
     "muertos": {
       "title": "¿Llegan antes?",
       "text": "El Día de Muertos se celebra el 1 y 2 de noviembre, el fin de semana anterior a la boda. Puebla, Tlaxcala y Atlixco se llenan de cempasúchil, ofrendas y desfiles. Es un gran pretexto para venir unos días antes."
     },
-    "driveLabel": "En coche desde Val'Quirico"
+    "driveLabel": "En coche desde Val'Quirico",
+    "credits": {
+      "title": "Créditos de las fotos",
+      "note": "Las fotos de esta página son de Wikimedia Commons, usadas bajo las licencias indicadas.",
+      "via": "vía Wikimedia Commons"
+    }
   },
   "attire": {
     "title": "Vestimenta y clima",

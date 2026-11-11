@@ -348,9 +348,9 @@
         "text": "Passeie pelas ruelas, escolha um terraço e peça alguma coisa com mezcal. A vila fica mais bonita de manhã cedo e depois que escurece, quando os lampiões se acendem."
       },
       {
-        "name": "Cacaxtla e Xochitécatl",
-        "distance": "[TODO: confirmar, uns 20 min]",
-        "text": "Um sítio arqueológico no alto de uma colina, pertinho da vila, conhecido por alguns dos murais pré-hispânicos mais bem preservados do México."
+        "name": "Cidade do México",
+        "distance": "Cerca de 2 h",
+        "text": "Se você já vai pousar lá, reserve alguns dias: museus, mercados e alguns dos melhores restaurantes do continente."
       },
       {
         "name": "Puebla",
@@ -363,6 +363,11 @@
         "text": "Suba a Grande Pirâmide, a maior do mundo em volume, até a igreja amarela lá no topo. Em manhãs de céu limpo, o vulcão Popocatépetl toma conta do horizonte."
       },
       {
+        "name": "Cacaxtla e Xochitécatl",
+        "distance": "[TODO: confirmar, uns 20 min]",
+        "text": "Um sítio arqueológico no alto de uma colina, pertinho da vila, conhecido por alguns dos murais pré-hispânicos mais bem preservados do México."
+      },
+      {
         "name": "Tlaxcala",
         "distance": "Cerca de 30 min",
         "text": "A pequena e calma capital do estado: uma praça principal em tons de laranja e vermelho, murais que contam a história dos tlaxcaltecas e uma das igrejas mais antigas das Américas."
@@ -371,18 +376,18 @@
         "name": "Atlixco",
         "distance": "[TODO: confirmar, cerca de 1 h]",
         "text": "Uma cidade de flores aos pés do vulcão, com viveiros, terraços e um bom sorvete."
-      },
-      {
-        "name": "Cidade do México",
-        "distance": "Cerca de 2 h",
-        "text": "Se você já vai pousar lá, reserve alguns dias: museus, mercados e alguns dos melhores restaurantes do continente."
       }
     ],
     "muertos": {
       "title": "Vai chegar antes?",
       "text": "O Dia dos Mortos é celebrado nos dias 1º e 2 de novembro, no fim de semana anterior ao casamento. Puebla, Tlaxcala e Atlixco se enchem de flores de cempasúchil, altares e desfiles. É um belo motivo para vir alguns dias antes."
     },
-    "driveLabel": "De carro, saindo de Val'Quirico"
+    "driveLabel": "De carro, saindo de Val'Quirico",
+    "credits": {
+      "title": "Créditos das fotos",
+      "note": "As fotos desta página são do Wikimedia Commons, usadas sob as licenças indicadas.",
+      "via": "via Wikimedia Commons"
+    }
   },
   "attire": {
     "title": "Traje e clima",
