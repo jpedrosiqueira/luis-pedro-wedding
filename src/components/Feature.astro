@@ -1,0 +1,34 @@
+---
+/**
+ * A framed photo overlapping a linen panel, with a title, text and optional facts.
+ * `flip` puts the photo on the right. `ornament` is the line drawing on the panel.
+ */
+import type { Lang } from '../i18n';
+import { rich } from '../i18n';
+import Photo from './Photo.astro';
+import Ornament from './Ornament.astro';
+interface Fact { value?: string; label: string; text?: string; }
+interface Props { lang: Lang; photo: string; alt?: string; title: string; text?: string | string[]; ornament?: string; flip?: boolean; facts?: Fact[]; ratio?: string; }
+const { lang, photo, alt, title, text, ornament = 'olive', flip = false, facts = [], ratio = '3 / 2' } = Astro.props;
+const paragraphs = text ? (Array.isArray(text) ? text : [text]) : [];
+---
+<article class:list={['feature', flip && 'feature--flip']}>
+  <div class="feature__photo"><Photo name={photo} alt={alt ?? title} lang={lang} framed ratio={ratio} sizes="(min-width: 56rem) 55vw, 88vw" /></div>
+  <div class="feature__panel" aria-hidden="true"></div>
+  <Ornament name={ornament} class="feature__ornament" />
+  <div class="feature__text">
+    <h2>{title}</h2>
+    {paragraphs.map((p) => <p set:html={rich(lang, p)} />)}
+    <slot />
+    {facts.length > 0 && (
+      <dl class="facts">
+        {facts.map((f) => (
+          <div>
+            <dt>{f.value && <span class="numeral" set:html={rich(lang, f.value)} />}{f.label}</dt>
+            {f.text && <dd set:html={rich(lang, f.text)} />}
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+</article>

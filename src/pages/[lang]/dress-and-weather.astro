@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
 import { langPaths, type Lang, useT, rich, fill } from '../../i18n';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -8,18 +9,19 @@ const t = useT(lang);
 const a = t.attire;
 ---
 <Layout lang={lang} pageKey="attire" slug="dress-and-weather" title={a.title} description={a.lead}>
-  <PageHero lang={lang} pageKey="attire" title={a.title} lead={a.lead} photo="attire" />
-  <section class="section">
+  <Banner lang={lang} title={a.title} photo="attire" />
+  <Intro lang={lang} lead={a.lead} ornament="cypress" />
+  <section class="section section--flush">
     <div class="wrap split">
       <div class="split__head"><h2>{a.dress.title}</h2></div>
       <p class="callout" set:html={rich(lang, a.dress.text)} />
     </div>
   </section>
-  <section class="section">
+  <section class="section rule">
     <div class="wrap split">
       <div class="split__head"><h2>{a.weather.title}</h2></div>
       <div>
-        <dl class="figures" style="margin-top: 0" data-reveal>
+        <dl class="figures">
           {a.weather.stats.map((s) => <div><dt class="figure__value">{fill(lang, s.value)}</dt><dd class="figure__label">{s.label}</dd></div>)}
         </dl>
         <div class="prose">
@@ -29,13 +31,13 @@ const a = t.attire;
       </div>
     </div>
   </section>
-  <section class="section">
+  <section class="section rule">
     <div class="wrap split">
       <div class="split__head"><h2>{a.shoes.title}</h2></div>
-      <p class="prose" style="font-size: var(--text-lg)" set:html={rich(lang, a.shoes.text)} />
+      <p class="prose" set:html={rich(lang, a.shoes.text)} />
     </div>
   </section>
-  <section class="section">
+  <section class="section rule">
     <div class="wrap split">
       <div class="split__head"><h2>{a.pack.title}</h2></div>
       <ul class="bullets prose">{a.pack.items.map((i) => <li set:html={rich(lang, i)} />)}</ul>

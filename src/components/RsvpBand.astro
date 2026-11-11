@@ -1,12 +1,14 @@
 ---
 import { href, type Lang, useT } from '../i18n';
+import Seal from './Seal.astro';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 ---
 <section class="band">
-  <div class="wrap" data-reveal>
+  <div class="wrap">
+    <Seal />
     <h2>{t.home.rsvpBand.title}</h2>
     <p>{t.home.rsvpBand.text}</p>
-    <a class="btn btn--light" href={href(lang, 'rsvp')}>{t.common.rsvp}</a>
+    <a class="btn" href={href(lang, 'rsvp')}>{t.common.rsvp}</a>
   </div>
 </section>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
 import { langPaths, type Lang, useT, rich } from '../../i18n';
 import { site } from '../../config/site';
 export const getStaticPaths = langPaths;
@@ -10,10 +11,11 @@ const f = t.faq;
 const c = f.contact;
 ---
 <Layout lang={lang} pageKey="faq" slug="faq" title={f.title} description={f.lead}>
-  <PageHero lang={lang} pageKey="faq" title={f.title} lead={f.lead} />
-  <section class="section">
+  <Banner lang={lang} title={f.title} photo="faq" />
+  <Intro lang={lang} lead={f.lead} />
+  <section class="section section--flush">
     <div class="wrap">
-      <div class="faq" style="max-width: 48rem">
+      <div class="faq">
         {f.items.map((it) => (
           <details>
             <summary>{it.q}</summary>
@@ -23,17 +25,17 @@ const c = f.contact;
       </div>
     </div>
   </section>
-  <section class="section" id="contact">
+  <section class="section rule" id="contact">
     <div class="wrap split">
       <div class="split__head"><h2>{c.title}</h2></div>
       <div>
-        <p class="prose" style="font-size: var(--text-lg)">{c.text}</p>
+        <p class="prose">{c.text}</p>
         <div class="contact-links">
           {site.contact.email
             ? <a class="btn" href={`mailto:${site.contact.email}`}>{c.email}</a>
             : <span set:html={rich(lang, c.emailTodo)} />}
           {site.contact.whatsapp
-            ? <a class="btn btn--ghost" href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener">{c.whatsapp}</a>
+            ? <a class="btn btn--outline" href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener">{c.whatsapp}</a>
             : <span set:html={rich(lang, c.whatsappTodo)} />}
         </div>
         <p class="muted" style="margin-top: var(--space-6)" set:html={rich(lang, c.dayOf)} />

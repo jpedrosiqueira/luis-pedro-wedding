@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
+import Feature from '../../components/Feature.astro';
 import { langPaths, type Lang, useT, rich } from '../../i18n';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -8,26 +10,25 @@ const t = useT(lang);
 const s = t.stay;
 ---
 <Layout lang={lang} pageKey="stay" slug="stay" title={s.title} description={s.lead}>
-  <PageHero lang={lang} pageKey="stay" title={s.title} lead={s.lead} photo="stay" />
-  <section class="section">
+  <Banner lang={lang} title={s.title} photo="stay" />
+  <Intro lang={lang} lead={s.lead} ornament="lantern" />
+  <section class="section section--flush">
+    <div class="wrap">
+      <Feature lang={lang} photo="stay-village" title={s.inside.title} text={s.inside.lead} ornament="lantern"
+        facts={s.inside.items.map((it) => ({ label: it.name, text: it.text }))} />
+    </div>
+  </section>
+  <section class="section rule">
     <div class="wrap split">
       <div class="split__head"><h2>{s.block.title}</h2></div>
       <p class="callout" set:html={rich(lang, s.block.text)} />
     </div>
   </section>
-  <section class="section">
-    <div class="wrap split">
-      <div class="split__head"><h2>{s.inside.title}</h2><p class="muted">{s.inside.lead}</p></div>
-      <ul class="rows" data-reveal>
-        {s.inside.items.map((it) => <li><h3 translate="no">{it.name}</h3><p set:html={rich(lang, it.text)} /></li>)}
-      </ul>
-    </div>
-  </section>
-  <section class="section">
+  <section class="section rule">
     <div class="wrap split">
       <div class="split__head"><h2>{s.nearby.title}</h2></div>
       <div class="stack">
-        <ul class="rows" data-reveal>
+        <ul class="rows">
           {s.nearby.items.map((it) => <li><h3>{it.name}</h3><p set:html={rich(lang, it.text)} /></li>)}
         </ul>
         <p class="muted" set:html={rich(lang, s.tip)} />

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
 import { langPaths, type Lang, useT, rich } from '../../i18n';
 import { site } from '../../config/site';
 export const getStaticPaths = langPaths;
@@ -9,15 +10,17 @@ const t = useT(lang);
 const g = t.gifts;
 ---
 <Layout lang={lang} pageKey="gifts" slug="gifts" title={g.title} description={g.lead}>
-  <PageHero lang={lang} pageKey="gifts" title={g.title} lead={g.lead} photo="gifts" />
-  <section class="section">
-    <div class="wrap split">
-      <div class="split__head"><h2>{g.fund.title}</h2></div>
-      <div class="stack">
-        <p class="prose" style="font-size: var(--text-lg)" set:html={rich(lang, g.text)} />
+  <Banner lang={lang} title={g.title} photo="gifts" />
+  <Intro lang={lang} lead={g.lead} ornament="marigold">
+    <p class="muted" style="max-width: 34rem; margin: var(--space-6) auto 0" set:html={rich(lang, g.text)} />
+  </Intro>
+  <section class="section section--flush">
+    <div class="wrap center" style="max-width: 46rem">
+      <h2>{g.fund.title}</h2>
+      <div style="margin-top: var(--space-6)">
         {site.registryUrl
-          ? <p><a class="btn" href={site.registryUrl} target="_blank" rel="noopener">{g.fund.cta}</a></p>
-          : <p class="callout" set:html={rich(lang, g.fund.text)} />}
+          ? <a class="btn" href={site.registryUrl} target="_blank" rel="noopener">{g.fund.cta}</a>
+          : <p class="callout" style="text-align: left" set:html={rich(lang, g.fund.text)} />}
       </div>
     </div>
   </section>

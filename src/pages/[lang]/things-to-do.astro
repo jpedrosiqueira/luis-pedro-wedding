@@ -1,35 +1,36 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
-import Photo from '../../components/Photo.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
+import Feature from '../../components/Feature.astro';
+import Ornament from '../../components/Ornament.astro';
 import { langPaths, type Lang, useT, rich } from '../../i18n';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const t = useT(lang);
 const x = t.explore;
-// Photo file names, in the same order as the places in the language files.
+// Photo file names and line drawings, in the same order as the places in the language files.
 const photos = ['explore-valquirico', 'explore-cacaxtla', 'explore-puebla', 'explore-cholula', 'explore-tlaxcala', 'explore-atlixco', 'explore-mexico-city'];
+const art = ['lantern', 'agave', 'arch', 'cypress', 'olive', 'marigold', 'agave'];
 ---
 <Layout lang={lang} pageKey="explore" slug="things-to-do" title={x.title} description={x.lead}>
-  <PageHero lang={lang} pageKey="explore" title={x.title} lead={x.lead} />
-  <section class="section">
+  <Banner lang={lang} title={x.title} photo="explore" />
+  <Intro lang={lang} lead={x.lead} ornament="agave" />
+  <section class="section section--flush">
     <div class="wrap">
-      <ul class="places">
-        {x.places.map((p, i) => (
-          <li class="place" data-reveal>
-            <Photo name={photos[i] ?? `explore-${i + 1}`} alt={p.name} lang={lang} ratio="3 / 2" sizes="(min-width: 40rem) 46vw, 92vw" />
-            <div class="place__meta"><h2>{p.name}</h2><span class="label" set:html={rich(lang, p.distance)} /></div>
-            <p set:html={rich(lang, p.text)} />
-          </li>
-        ))}
-      </ul>
-      <p class="muted small" style="margin-top: var(--space-12)">{x.note}</p>
+      {x.places.map((p, i) => (
+        <Feature lang={lang} photo={photos[i] ?? `explore-${i + 1}`} title={p.name} text={p.text} ornament={art[i % art.length]} flip={i % 2 === 1}
+          facts={i === 0 ? [{ label: p.distance }] : [{ label: x.driveLabel, text: p.distance }]} />
+      ))}
+      <p class="muted small center" style="margin-top: var(--space-12)">{x.note}</p>
     </div>
   </section>
-  <section class="section">
-    <div class="wrap split">
-      <div class="split__head"><h2>{x.muertos.title}</h2></div>
-      <p class="prose" style="font-size: var(--text-lg)" set:html={rich(lang, x.muertos.text)} />
+  <section class="section rule">
+    <div class="wrap intro" style="padding-block: 0">
+      <Ornament name="marigold" />
+      <span class="vline" aria-hidden="true"></span>
+      <h2>{x.muertos.title}</h2>
+      <p class="intro__lead" style="margin-top: var(--space-4)" set:html={rich(lang, x.muertos.text)} />
     </div>
   </section>
 </Layout>

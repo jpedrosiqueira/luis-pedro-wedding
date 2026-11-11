@@ -1,0 +1,14 @@
+---
+/** Short photo band at the top of every inner page, with the page title on it. */
+import type { Lang } from '../i18n';
+import Photo from './Photo.astro';
+import Curve from './Curve.astro';
+interface Props { lang: Lang; title: string; photo: string; }
+const { lang, title, photo } = Astro.props;
+---
+<section class="banner on-photo">
+  <Photo name={photo} fallback="hero" alt="" lang={lang} fill eager />
+  <div class="scrim"></div>
+  <div class="wrap banner__content"><h1>{title}</h1></div>
+  <Curve />
+</section>

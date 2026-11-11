@@ -1,61 +1,64 @@
-/* tastemaker · macrostructure: Editorial Index · mood: warm/elegant · page: wedding site (11 pages x 3 languages)
- * arc: hook(H1 names+arch) -> stakes(countdown) -> how(weekend strip) -> solution(travel figures) -> index(numbered contents) -> close(RSVP band)
- * nav: N4 two-row masthead · hero: H1 statement + arch photo · footer: Ft4 monogram colophon
- * palette: extracted from the three Val'Quirico reference photos · contrast: pass (matrix, see .tastemaker/style-lock.md)
- * critique: ShowTell 4 · Phil 4 · Hier 5 · Spec 5 · Restr 5 · Var 4 · ColorHarm 5 · MoodTone 5 · Type 4 · Spatial 4 · Pref 4 */
+/* tastemaker · macrostructure: Photo-led Invitation · mood: warm/elegant (Tuscan) · page: wedding site (11 pages x 3 languages)
+ * arc: hook(H2 full-bleed photo + names) -> promise(statement) -> stakes(countdown) -> how(three-day arch trio) -> solution(getting-there feature) -> index(contents) -> close(RSVP band)
+ * nav: N2 floating two-row, solid on scroll · hero: H2 full-bleed photo/centered/curved edge · footer: Ft2 dark colophon with seal
+ * palette: sampled from the couple's three style references, see DESIGN.md · contrast: pass (matrix, see .tastemaker/style-lock.md)
+ * critique: ShowTell 4 · Phil 5 · Hier 5 · Spec 5 · Restr 4 · Var 4 · ColorHarm 5 · MoodTone 5 · Type 5 · Spatial 4 · Pref 4 */
 
 /* ==========================================================================
    THEME FILE. Change colours, fonts and shapes here to match your
    Save the Date. Nothing else in the site hard-codes these values.
+   The reasoning behind them is in DESIGN.md.
    ========================================================================== */
 :root {
-  /* Colours, sampled from stone, stucco and dusk in Val'Quirico */
-  --color-bg: #f6efe4;          /* cream stucco: page background */
-  --color-surface: #fcf8f1;     /* lighter cream: panels */
-  --color-text: #2b2019;        /* espresso: body text */
-  --color-muted: #6a584a;       /* weathered wood: secondary text */
-  --color-primary: #9e4a2b;     /* terracotta: buttons, links */
-  --color-primary-dark: #853b20;/* terracotta, pressed/hover */
-  --color-on-primary: #fff9f0;  /* text on terracotta */
-  --color-accent: #5e6f54;      /* sage: small labels, details */
-  --color-border: #d8cbb9;      /* stone: hairlines */
-  --color-stone: #e9dfd0;       /* stone wash: placeholders, bands */
-  --color-dusk: #232733;        /* evening sky: dark bands */
-  --color-on-dusk: #f6efe4;     /* text on dusk */
-  --color-glow: #e9b872;        /* lantern light: accents on dusk only */
+  /* Colours: warm, neutral, Tuscan stone. Colour comes mostly from photos. */
+  --color-bg: #faf6f3;           /* ivory: page background */
+  --color-panel: #f1ede8;        /* linen: tinted panels behind photos */
+  --color-white: #ffffff;        /* photo frames, form fields, text on photos */
+  --color-border: #dedad4;       /* stone: hairlines */
+  --color-taupe: #c4b8af;        /* soft details, text on the dark footer */
+  --color-muted: #705a4e;        /* mocha: secondary text */
+  --color-text: #3a2e27;         /* espresso: headings and body text */
+  --color-primary: #705a4e;      /* mocha: buttons */
+  --color-primary-dark: #5a473d; /* mocha, hover */
+  --color-on-primary: #faf6f3;   /* text on mocha */
+  --color-accent: #9e4a2b;       /* terracotta: the ampersand, the weekend dates, small markers */
+  --color-line: #6b6f4e;         /* olive: line drawings only */
+  --color-dark: #3a2e27;         /* footer background */
+  --color-on-dark: #faf6f3;
+  --color-photo-empty: #7b6558;  /* placeholder tone where a large photo will go */
 
-  /* Fonts. To change: install another @fontsource package, import it in
-     src/layouts/Layout.astro, and put its name first in these lists. */
-  --font-heading: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
-  --font-body: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Fonts. To change one: install another @fontsource package, swap the
+     matching import lines at the top of src/layouts/Layout.astro, and put the
+     new name first in the list below. */
+  --font-display: 'Bodoni Moda Variable', 'Bodoni 72', Didot, 'Times New Roman', serif; /* names and numerals */
+  --font-heading: 'Cormorant Garamond Variable', 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-body: 'Jost Variable', Jost, 'Century Gothic', system-ui, sans-serif;
 
   /* Type scale (fluid, mobile first) */
-  --text-xs: 0.8125rem;
+  --text-xs: 0.75rem;
   --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
-  --text-lg: clamp(1.2rem, 1.1rem + 0.5vw, 1.4rem);
-  --text-xl: clamp(1.6rem, 1.3rem + 1.4vw, 2.25rem);
-  --text-2xl: clamp(2.1rem, 1.6rem + 2.6vw, 3.5rem);
-  --text-hero: clamp(3.6rem, 2rem + 9.5vw, 9rem);
+  --text-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.25rem + 1.2vw, 2.125rem);
+  --text-2xl: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);
+  --tracking-caps: 0.06em;       /* uppercase serif headings */
+  --tracking-label: 0.14em;      /* small uppercase labels and menu */
 
-  /* Spacing scale */
+  /* Spacing scale (8px base) */
   --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
   --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem;
-  --space-24: 6rem; --space-32: 8rem;
-  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --space-24: 6rem; --space-32: 8rem; --space-40: 10rem;
+  --gutter: clamp(1.25rem, 6vw, 6rem);
   --measure: 62ch;
-  --page-max: 72rem;
+  --page-max: 75rem;
 
-  /* Shape. The arch echoes the stone doorways of Val'Quirico. */
-  --radius-arch: 999px 999px 4px 4px;
-  --radius-sm: 4px;
-  --radius-pill: 999px;
+  /* Shape: square, or fully curved. Nothing in between. */
+  --radius-arch: 999px 999px 0 0;
+  --frame: 6px;                  /* white border around framed photos */
+  --shadow-frame: 0 8px 30px rgb(58 46 39 / 0.08);
 
-  /* Motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Motion: slow and soft */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --duration: 200ms;
-  --reveal-duration: 260ms;
-  --reveal-distance: 12px;
-  --reveal-easing: var(--ease-out);
-  --reveal-stagger-step: 60ms;
 }
+@media (min-width: 56rem) { :root { --frame: 8px; } }

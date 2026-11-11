@@ -1,0 +1,14 @@
+---
+/** The opening lines under a banner: a small line drawing, a hairline, then the lead sentence. */
+import type { Lang } from '../i18n';
+import { rich } from '../i18n';
+import Ornament from './Ornament.astro';
+interface Props { lang: Lang; lead: string; ornament?: string; }
+const { lang, lead, ornament = 'olive' } = Astro.props;
+---
+<div class="wrap intro">
+  <Ornament name={ornament} />
+  <span class="vline" aria-hidden="true"></span>
+  <p class="intro__lead" set:html={rich(lang, lead)} />
+  <slot />
+</div>

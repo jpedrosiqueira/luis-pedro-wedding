@@ -47,6 +47,7 @@ npm run preview
 | Date, venue, contact, RSVP link, registry link | `src/config/site.ts` |
 | Schedule times | `src/data/schedule.ts` |
 | Colours, fonts, shapes | `src/styles/theme.css` |
+| The design rules and the reasoning behind them | `DESIGN.md` |
 | Photos | `src/assets/photos/` |
 | Social preview images | `public/og/en.jpg`, `pt.jpg`, `es.jpg` |
 | Google Sheet script for RSVPs | `apps-script/Code.gs` |
@@ -87,7 +88,15 @@ comma or quotation mark in a JSON file. The error message gives the line number.
 
 Put a photo in `src/assets/photos/` with the name shown on the placeholder
 (for example `hero.jpg`). That is all: it is cropped, resized and compressed for
-you. The full list of names is in `src/assets/photos/README.md`.
+you. The full list of names and shapes is in `src/assets/photos/README.md`.
+
+Start with `hero`. It fills the first screen of the home page and, until you
+add others, the top band of every page.
+
+Text sits on top of the hero and band photos. A soft dark gradient is added
+automatically so the text stays readable, but very bright or busy photos can
+still make it hard to read. If that happens, pick a calmer photo or darken it
+slightly.
 
 The image that appears when the link is shared on WhatsApp or iMessage is
 separate: replace `public/og/en.jpg`, `pt.jpg` and `es.jpg` with 1200 x 630 px
@@ -117,10 +126,18 @@ and it applies across the site. If you change text or button colours, check the
 contrast (for example at https://webaim.org/resources/contrastchecker/): body
 text should reach 4.5:1.
 
-To change a font, install another [Fontsource](https://fontsource.org) package,
-swap the two `import '@fontsource-variable/...'` lines and the two font-file
-lines at the top of `src/layouts/Layout.astro`, then put the new name first in
-`--font-heading` or `--font-body`.
+The site uses three fonts: Bodoni Moda for your names and numbers, Cormorant
+Garamond for headings, and Jost for reading text. To change one, install
+another [Fontsource](https://fontsource.org) package, swap the matching
+`import` lines at the top of `src/layouts/Layout.astro`, then put the new name
+first in `--font-display`, `--font-heading` or `--font-body`.
+
+Headings are in capitals. If a heading is too long in one language on a phone,
+shorten that heading in the language file.
+
+The small line drawings (olive branch, cypresses, lantern, arch, marigold,
+agave) are in `src/components/Ornament.astro`. Which drawing appears where is
+set by `ornament="..."` in each page under `src/pages/[lang]/`.
 
 ## RSVP setup
 

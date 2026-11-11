@@ -1,0 +1,13 @@
+---
+/** A round seal: place and date circling the monogram. The date uses a Roman month so it reads the same in every language. */
+import { site } from '../config/site';
+const id = 'seal-' + Math.random().toString(36).slice(2, 8);
+---
+<svg class="seal" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+  <defs><path id={id} d="M80 80m-62 0a62 62 0 1 1 124 0a62 62 0 1 1 -124 0" /></defs>
+  <g class="seal__ring">
+    <text><textPath href={`#${id}`} textLength="386" lengthAdjust="spacing">VAL'QUIRICO · TLAXCALA · MÉXICO · 6 · XI · 2027 ·</textPath></text>
+  </g>
+  <circle cx="80" cy="80" r="50" fill="none" stroke="currentColor" stroke-width="0.6" />
+  <text class="seal__mono" x="80" y="89" text-anchor="middle">{site.couple.a[0]}&amp;{site.couple.b[0]}</text>
+</svg>

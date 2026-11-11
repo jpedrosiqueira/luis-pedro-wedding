@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
+import Ornament from '../../components/Ornament.astro';
 import { langPaths, type Lang, useT, rich } from '../../i18n';
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -8,8 +10,9 @@ const t = useT(lang);
 const v = t.travel;
 ---
 <Layout lang={lang} pageKey="travel" slug="travel" title={v.title} description={v.lead}>
-  <PageHero lang={lang} pageKey="travel" title={v.title} lead={v.lead} />
-  <section class="section">
+  <Banner lang={lang} title={v.title} photo="travel" />
+  <Intro lang={lang} lead={v.lead} ornament="cypress" />
+  <section class="section section--flush">
     <div class="wrap split">
       <div class="split__head"><h2>{v.airports.title}</h2><p class="muted small">{t.common.lastChecked}</p></div>
       <ul class="rows rows--airports">
@@ -23,15 +26,15 @@ const v = t.travel;
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section rule">
     <div class="wrap split">
-      <div class="split__head"><h2>{v.ground.title}</h2></div>
-      <ul class="rows" data-reveal>
+      <div class="split__head"><h2>{v.ground.title}</h2><Ornament name="agave" class="aside-ornament" /></div>
+      <ul class="rows">
         {v.ground.items.map((it) => <li><h3>{it.title}</h3><p set:html={rich(lang, it.text)} /></li>)}
       </ul>
     </div>
   </section>
-  <section class="section">
+  <section class="section rule">
     <div class="wrap split">
       <div class="split__head"><h2>{v.entry.title}</h2></div>
       <div class="stack">

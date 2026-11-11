@@ -1,6 +1,6 @@
 {
   "_help": "Texto en español (México). Edita el texto a la derecha de los dos puntos; no cambies las claves de la izquierda. Marcadores: [TODO: nota] muestra un recordatorio resaltado en la página. **negritas** y [texto del enlace](https://direccion) funcionan. Los valores inteligentes se adaptan a cada idioma: {{date:2027-11-06}}, {{time:15:00}}, {{mxn:200}}, {{dist:22}} (kilómetros), {{temp:23}} (Celsius).",
-  "_review": "Textos para que los revisen (traducciones en las que tengo menos certeza del tono): home.intro, home.countdown.title, schedule.events.welcome.desc, attire.shoes.text, rsvp.fields.yes / no, faq.items (propinas y seguridad).",
+  "_review": "Textos para que los revisen (traducciones en las que tengo menos certeza del tono): home.statement, home.intro, home.countdown.title, schedule.events.welcome.desc, attire.shoes.text, rsvp.fields.yes / no, faq.items (propinas y seguridad).",
   "meta": {
     "siteTitle": "Luis & Pedro",
     "titleSuffix": "Luis & Pedro · 6 de noviembre de 2027",
@@ -27,17 +27,17 @@
   "common": {
     "rsvp": "Confirmar asistencia",
     "photoTodo": "Foto por agregar",
-    "continue": "Sigue leyendo",
     "openMaps": "Abrir en Google Maps",
     "tbc": "Por confirmar",
     "optional": "opcional",
-    "lastChecked": "Información revisada en noviembre de 2026. Confírmala antes de reservar."
+    "lastChecked": "Información revisada en noviembre de 2026. Confírmala antes de reservar.",
+    "withLove": "Con cariño,"
   },
   "home": {
-    "eyebrow": "Nos casamos",
     "date": "{{date:2027-11-06}}",
     "place": "Hacienda de Triana · Val'Quirico, Tlaxcala, México",
-    "intro": "Tres días en un pueblo de piedra entre dos volcanes, con la gente que más queremos. Vengan por la boda, quédense por los tacos.",
+    "statement": "**Tres días** en un pueblo de piedra entre dos volcanes, con la **gente que más queremos**.",
+    "intro": "Vengan por la boda, quédense por los tacos.",
     "heroAlt": "Luis y Pedro",
     "countdown": {
       "title": "Falta poco para el sí",
@@ -57,10 +57,21 @@
     "weekend": {
       "title": "El fin de semana",
       "lead": "Lleguen el viernes, bailen el sábado y despídanse en el brunch del domingo.",
-      "fri": "Rompe-hielo: unos tragos para conocernos",
-      "sat": "Ceremonia, cena y fiesta hasta las 11",
-      "sun": "Brunch de despedida",
-      "link": "Ver el programa completo"
+      "link": "Ver el programa completo",
+      "items": {
+        "fri": {
+          "title": "Rompe-hielo",
+          "text": "Unos tragos de bienvenida para conocernos"
+        },
+        "sat": {
+          "title": "La boda",
+          "text": "Ceremonia, cena y fiesta hasta las 11"
+        },
+        "sun": {
+          "title": "Brunch de despedida",
+          "text": "Un último café juntos"
+        }
+      }
     },
     "gettingThere": {
       "title": "Cómo llegar",
@@ -178,10 +189,22 @@
     "expect": {
       "title": "Qué esperar",
       "items": [
-        { "title": "Un patio al aire libre, bajo una carpa", "text": "Estaremos al aire libre, pero cubiertos. La carpa protege del sol y de alguna lluvia inesperada. Las noches refrescan, así que traigan algo para abrigarse." },
-        { "title": "Empedrado por todos lados", "text": "Las calles son de piedra irregular. El tacón de aguja y el empedrado no se llevan. Vean los consejos de calzado en la página de vestimenta y clima." },
-        { "title": "Altitud", "text": "El pueblo está a unos 2,200 metros sobre el nivel del mar. Tomen agua, vayan con calma con el primer trago y usen bloqueador durante el día." },
-        { "title": "Todo a pie", "text": "Los coches se quedan en la entrada del pueblo. [TODO: información sobre estacionamiento y dónde bajar a los invitados en la hacienda]" }
+        {
+          "title": "Un patio al aire libre, bajo una carpa",
+          "text": "Estaremos al aire libre, pero cubiertos. La carpa protege del sol y de alguna lluvia inesperada. Las noches refrescan, así que traigan algo para abrigarse."
+        },
+        {
+          "title": "Empedrado por todos lados",
+          "text": "Las calles son de piedra irregular. El tacón de aguja y el empedrado no se llevan. Vean los consejos de calzado en la página de vestimenta y clima."
+        },
+        {
+          "title": "Altitud",
+          "text": "El pueblo está a unos 2,200 metros sobre el nivel del mar. Tomen agua, vayan con calma con el primer trago y usen bloqueador durante el día."
+        },
+        {
+          "title": "Todo a pie",
+          "text": "Los coches se quedan en la entrada del pueblo. [TODO: información sobre estacionamiento y dónde bajar a los invitados en la hacienda]"
+        }
       ]
     },
     "map": {
@@ -277,18 +300,39 @@
       "title": "Dentro de Val'Quirico",
       "lead": "Hoteles pequeños y muchos lofts y departamentos, todos a unos pasos de la hacienda. Reserven con tiempo: el pueblo se llena los fines de semana.",
       "items": [
-        { "name": "Villa Toscana Val'Quirico Lofts & Suites", "text": "Hotel boutique con lofts y suites en el centro del pueblo." },
-        { "name": "Hotel Canaria ValQuirico", "text": "Hotel dentro de Val'Quirico. [TODO: confirmar y agregar una nota]" },
-        { "name": "Posada Valquiria ValQuirico", "text": "Posada pequeña dentro de Val'Quirico. [TODO: confirmar y agregar una nota]" },
-        { "name": "Lofts y departamentos", "text": "Airbnb, Booking y Expedia tienen decenas de lofts privados dentro del pueblo, ideales para familias o grupos de amigos." }
+        {
+          "name": "Villa Toscana Val'Quirico Lofts & Suites",
+          "text": "Hotel boutique con lofts y suites en el centro del pueblo."
+        },
+        {
+          "name": "Hotel Canaria ValQuirico",
+          "text": "Hotel dentro de Val'Quirico. [TODO: confirmar y agregar una nota]"
+        },
+        {
+          "name": "Posada Valquiria ValQuirico",
+          "text": "Posada pequeña dentro de Val'Quirico. [TODO: confirmar y agregar una nota]"
+        },
+        {
+          "name": "Lofts y departamentos",
+          "text": "Airbnb, Booking y Expedia tienen decenas de lofts privados dentro del pueblo, ideales para familias o grupos de amigos."
+        }
       ]
     },
     "nearby": {
       "title": "Cerca",
       "items": [
-        { "name": "Puebla, centro histórico", "text": "A unos 30 minutos. Calles coloniales, comida espectacular y hoteles para todos los presupuestos." },
-        { "name": "Cholula", "text": "Ciudad universitaria con mucho ambiente, pegada a Puebla, con hoteles boutique y una pirámide famosa. De 30 a 40 minutos, aproximadamente. [TODO: confirmar el tiempo en coche]" },
-        { "name": "Ciudad de Tlaxcala", "text": "Tranquila, colorida y a unos 30 minutos." }
+        {
+          "name": "Puebla, centro histórico",
+          "text": "A unos 30 minutos. Calles coloniales, comida espectacular y hoteles para todos los presupuestos."
+        },
+        {
+          "name": "Cholula",
+          "text": "Ciudad universitaria con mucho ambiente, pegada a Puebla, con hoteles boutique y una pirámide famosa. De 30 a 40 minutos, aproximadamente. [TODO: confirmar el tiempo en coche]"
+        },
+        {
+          "name": "Ciudad de Tlaxcala",
+          "text": "Tranquila, colorida y a unos 30 minutos."
+        }
       ]
     },
     "tip": "Si se quedan fuera del pueblo, organicen el regreso del sábado en la noche antes de que empiece la fiesta. [TODO: confirmar si habrá transporte de madrugada a Puebla]"
@@ -337,7 +381,8 @@
     "muertos": {
       "title": "¿Llegan antes?",
       "text": "El Día de Muertos se celebra el 1 y 2 de noviembre, el fin de semana anterior a la boda. Puebla, Tlaxcala y Atlixco se llenan de cempasúchil, ofrendas y desfiles. Es un gran pretexto para venir unos días antes."
-    }
+    },
+    "driveLabel": "En coche desde Val'Quirico"
   },
   "attire": {
     "title": "Vestimenta y clima",
@@ -350,9 +395,18 @@
       "title": "El clima",
       "text": "A esta altitud el sol pega fuerte y la sombra es fresca. Es poco probable que llueva en noviembre. Ya de noche van a querer un saco, un chal o un rebozo, incluso bajo la carpa.",
       "stats": [
-        { "value": "{{temp:23}}", "label": "en una tarde típica" },
-        { "value": "{{temp:7}}", "label": "en una noche típica" },
-        { "value": "2,200 m", "label": "de altitud" }
+        {
+          "value": "{{temp:23}}",
+          "label": "en una tarde típica"
+        },
+        {
+          "value": "{{temp:7}}",
+          "label": "en una noche típica"
+        },
+        {
+          "value": "2,200 m",
+          "label": "de altitud"
+        }
       ],
       "source": "Con base en los promedios climáticos de Puebla, que está al lado. Revisen el pronóstico la semana anterior."
     },
@@ -491,7 +545,6 @@
     }
   },
   "footer": {
-    "line": "Con cariño, Luis & Pedro",
     "place": "Val'Quirico, Tlaxcala · {{date:2027-11-06}}"
   }
 }

@@ -1,7 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Photo from '../../components/Photo.astro';
+import Curve from '../../components/Curve.astro';
+import Ornament from '../../components/Ornament.astro';
 import Countdown from '../../components/Countdown.astro';
+import Feature from '../../components/Feature.astro';
 import { langPaths, type Lang, useT, fill, rich, href, pages, fmtDate } from '../../i18n';
 import { site } from '../../config/site';
 import { googleCalendarUrl } from '../../lib/calendar';
@@ -13,92 +16,99 @@ const t = useT(lang);
 const h = t.home;
 const nav = t.nav as Record<string, string>;
 const idx = h.index as Record<string, string>;
-const weekend = h.weekend as Record<string, string>;
+const items = h.weekend.items as Record<string, { title: string; text: string }>;
+const place = h.place.split(' · ');
 ---
 <Layout lang={lang} pageKey="home">
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="hero__text">
-        <p class="label">{h.eyebrow}</p>
-        <h1 class="hero__names"><span>{site.couple.a}</span><span><span class="amp">&amp;</span> {site.couple.b}</span></h1>
-        <p class="hero__date"><time datetime="2027-11-06">{fill(lang, h.date)}</time></p>
-        <p class="label hero__place">{h.place}</p>
-        <p class="hero__intro" set:html={rich(lang, h.intro)} />
-        <div class="hero__actions">
-          <a class="btn" href={href(lang, 'rsvp')}>{t.common.rsvp}</a>
-          <a class="btn btn--ghost" href={href(lang, 'schedule')}>{nav.schedule}</a>
-        </div>
-        <p class="hero__cal">
-          <span class="label">{h.calendar.title}</span>
-          <a href={href(lang) + 'wedding.ics'} download="luis-pedro.ics">{h.calendar.ics}</a>
-          <a href={googleCalendarUrl(lang)} target="_blank" rel="noopener">{h.calendar.google}</a>
-        </p>
-      </div>
-      <Photo name="hero" alt={h.heroAlt} lang={lang} arch eager class="hero__photo" ratio="4 / 5" sizes="(min-width: 56rem) 38vw, 26rem" />
+  <section class="hero on-photo">
+    <Photo name="hero" alt={h.heroAlt} lang={lang} fill eager />
+    <div class="scrim"></div>
+    <div class="wrap hero__content">
+      <h1 class="hero__names"><span>{site.couple.a}</span> <span>&amp; {site.couple.b}</span></h1>
+      <p class="hero__date"><time datetime="2027-11-06">{fill(lang, h.date)}</time></p>
+      <p class="label hero__place">{place.map((line, i) => <>{i > 0 && <br />}{line}</>)}</p>
+      <p class="hero__actions"><a class="btn btn--light" href={href(lang, 'rsvp')}>{t.common.rsvp}</a></p>
+    </div>
+    <Curve />
+  </section>
+
+  <section class="wrap intro">
+    <Ornament name="olive" />
+    <span class="vline" aria-hidden="true"></span>
+    <p class="statement" set:html={rich(lang, h.statement)} />
+    <p set:html={rich(lang, h.intro)} />
+    <p class="signature"><small>{t.common.withLove}</small>{site.couple.a} &amp; {site.couple.b}</p>
+  </section>
+
+  <section class="section rule">
+    <div class="wrap">
+      <Countdown lang={lang} />
+      <p class="cal">
+        <span class="muted">{h.calendar.title}:</span>
+        <a class="text-link" href={href(lang) + 'wedding.ics'} download="luis-pedro.ics">{h.calendar.ics}</a>
+        <a class="text-link" href={googleCalendarUrl(lang)} target="_blank" rel="noopener">{h.calendar.google}</a>
+      </p>
     </div>
   </section>
 
-  <section class="section section--tight dusk on-dusk">
-    <div class="wrap"><Countdown lang={lang} /></div>
-  </section>
-
-  <section class="section">
+  <section class="section section--roomy rule">
     <div class="wrap">
-      <div class="split">
-        <div class="split__head" data-reveal>
-          <h2>{weekend.title}</h2>
-          <p class="muted">{weekend.lead}</p>
-          <p><a class="arrow-link" href={href(lang, 'schedule')}>{weekend.link}</a></p>
-        </div>
-        <ol class="days" data-reveal>
-          {days.map((d) => (
-            <li>
-              <span class="days__num" aria-hidden="true">{d.date.slice(8)}</span>
-              <div class="days__body">
-                <p class="label"><time datetime={d.date}>{fmtDate(lang, d.date, { year: undefined })}</time></p>
-                <p class="serif" style="font-size: var(--text-lg); line-height: 1.25">{weekend[d.id]}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+      <div class="section-head">
+        <h2>{h.weekend.title}</h2>
+        <p class="muted">{h.weekend.lead}</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="split">
-        <div class="split__head" data-reveal>
-          <h2>{h.gettingThere.title}</h2>
-          <p class="muted">{h.gettingThere.lead}</p>
-        </div>
-        <div data-reveal>
-          <Photo name="home-village" alt="Val'Quirico" lang={lang} ratio="16 / 9" sizes="(min-width: 56rem) 60vw, 92vw" />
-          <dl class="figures">
-            <div><dt class="figure__value">{h.gettingThere.pbcValue}</dt><dd class="figure__label">{h.gettingThere.pbcLabel}</dd></div>
-            <div><dt class="figure__value">{h.gettingThere.mexValue}</dt><dd class="figure__label">{h.gettingThere.mexLabel}</dd></div>
-          </dl>
-          <a class="arrow-link" href={href(lang, 'travel')}>{h.gettingThere.link}</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <h2 data-reveal>{idx.title}</h2>
-      <ol class="index">
-        {pages.map((p, i) => (
-          <li>
-            <a href={href(lang, p.slug)}>
-              <span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-              <span class="index__name">{nav[p.key]}</span>
-              <span class="index__desc">{idx[p.key]}</span>
-              <span class="index__arrow" aria-hidden="true">→</span>
-            </a>
+      <ol class="trio" data-unveil>
+        {days.map((d, i) => (
+          <li class="trio__item" style={`--i: ${i}`}>
+            <div class="trio__frame">
+              <Photo name={`weekend-${d.id}`} alt={items[d.id].title} lang={lang} arch ratio="2 / 3" sizes="(min-width: 56rem) 15rem, 40vw" />
+              <span class="trio__num numeral" aria-hidden="true">{d.date.slice(8)}.</span>
+            </div>
+            <span class="vline" aria-hidden="true"></span>
+            <div class="trio__body">
+              <p class="label"><time datetime={d.date}>{fmtDate(lang, d.date, { year: undefined })}</time></p>
+              <h3>{items[d.id].title}</h3>
+              <p class="muted small">{items[d.id].text}</p>
+            </div>
           </li>
         ))}
       </ol>
+      <p class="center" style="margin-top: var(--space-12)"><a class="btn btn--outline" href={href(lang, 'schedule')}>{h.weekend.link}</a></p>
+    </div>
+  </section>
+
+  <section class="section section--roomy rule">
+    <div class="wrap">
+      <Feature
+        lang={lang}
+        photo="home-village"
+        alt="Val'Quirico"
+        title={h.gettingThere.title}
+        text={h.gettingThere.lead}
+        ornament="cypress"
+        facts={[
+          { value: h.gettingThere.pbcValue, label: h.gettingThere.pbcLabel },
+          { value: h.gettingThere.mexValue, label: h.gettingThere.mexLabel },
+        ]}
+      >
+        <p><a class="text-link" href={href(lang, 'travel')}>{h.gettingThere.link}</a></p>
+      </Feature>
+    </div>
+  </section>
+
+  <section class="section rule">
+    <div class="wrap">
+      <div class="section-head"><h2>{idx.title}</h2></div>
+      <ul class="contents">
+        {pages.map((p) => (
+          <li>
+            <a href={href(lang, p.slug)}>
+              <span class="contents__name">{nav[p.key]}</span>
+              <span class="contents__desc">{idx[p.key]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 </Layout>

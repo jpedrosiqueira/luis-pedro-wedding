@@ -1,40 +1,42 @@
 # Style lock: Luis & Pedro wedding site
 
-Established: 2026-11-10. Source: three reference photos of Val'Quirico supplied by the couple
-(stone and stucco lanes in daylight; the plaza at dusk with lantern light), read with
-`extract_palette.py`, then tuned by hand against `check_contrast.py --matrix`.
+Established: 2026-11-10. Redirected: 2026-11-11 by the couple, from three style references
+(a monochrome "save the dates" landing, a planner home page with a full-bleed hero, and a
+planner packages page with framed photos on tinted panels). Full study and decisions: DESIGN.md.
 
 ## Direction
-- Thesis: a quiet editorial invitation with the textures of a stone village. Cream stucco page,
-  espresso text, terracotta for action, sage for small labels, and the dusk sky as the one dark band.
-- Signature shape: the arch (photos with a round top), taken from the stone doorways in the references.
-- Motion: CSS only. One hero entrance, a light scroll reveal, hover feedback. No GSAP, by choice:
-  the brief asks for minimal JavaScript and top Core Web Vitals.
+- Thesis: Tuscany in Mexico. Stone, stucco, olive and a touch of terracotta; photo-led, neutral, unhurried.
+- First viewport: full-bleed photo, names in Bodoni capitals, date, place, one button; header floating over it.
+- Risk accepted: the look depends on warm, consistently edited photography that is not in the repo yet.
 
 ## Palette (all in src/styles/theme.css)
-- Background #F6EFE4 · Surface #FCF8F1 · Stone #E9DFD0 · Border #D8CBB9
-- Text #2B2019 (14.6:1 on bg) · Muted #6A584A (5.9:1 on bg)
-- Primary terracotta #9E4A2B · on-primary #FFF9F0 (5.8:1) · hover #853B20
-- Accent sage #5E6F54 (4.7:1 on bg, labels only)
-- Dusk #232733 · on-dusk #F6EFE4 · Glow #E9B872 (on dusk only)
+- Ivory #FAF6F3 (bg) · Linen #F1EDE8 (panels) · White #FFFFFF (frames, fields) · Stone #DEDAD4 (hairlines) · Taupe #C4B8AF
+- Espresso #3A2E27 text (12.2:1 on ivory, 11.3:1 on linen) · Mocha #705A4E secondary text and buttons (6.0:1 / 5.5:1)
+- Terracotta #9E4A2B accent (5.6:1 on ivory): ampersand, weekend dates, active marker. Never a fill.
+- Olive #6B6F4E: line drawings only (decorative).
 - Dark mode: not needed, single mode.
 
 ## Color contract
-- Text-safe: text on bg/surface/border/glow; muted on bg/surface; primary on bg/surface; on-primary on
-  primary; accent on bg/surface; bg/surface/glow/border on dusk.
-- UI-safe only: muted/primary/accent on border.
-- Never: glow on light backgrounds; primary, accent or muted on dusk; text on primary.
+- Text-safe: espresso or mocha on ivory, linen, white; terracotta on ivory, linen, white; ivory on mocha; ivory or taupe on espresso; white on the photo scrim.
+- UI-safe only: mocha or terracotta on taupe.
+- Never: taupe or stone as text on light backgrounds; terracotta as a button or band fill; olive as text.
 
 ## Type
-- Headings: Fraunces Variable (optical size axis), weight 300 to 400.
-- Body: Instrument Sans Variable. Labels: 13px, 600, uppercase, 0.14em tracking.
+- Display (names, numerals): Bodoni Moda Variable 400, capitals.
+- Headings: Cormorant Garamond Variable 500, capitals, 0.06em tracking. Italic for the signature.
+- Body: Jost Variable 400, 17px, 1.7 line-height. Labels and menu: 11 to 12px, 500, capitals, 0.14em.
+
+## Shape, borders, motion
+- Radius: 0, or a full arch. Framed photos: 6 to 8px white border, shadow 0 8px 30px rgb(58 46 39 / 0.08).
+- Panels: linen fill, no border. Buttons: square, solid mocha; white on photos; outline for secondary.
+- Motion: CSS only. Hero entrance, arch unveil on the weekend trio, header responds to scroll, seal turns once a minute.
 
 ## Structure
-- Shared frame: two-row masthead (monogram, flag language switcher, RSVP; link row from 72rem),
-  numbered page heroes, 4/8 split sections with hairlines, terracotta RSVP band, dusk footer.
-- Home: Editorial Index (statement hero with arch photo, countdown band, three-day strip,
-  travel figures, numbered contents list).
+- Shared frame: floating two-row header (flags, names, RSVP; links below), photo banner with curved edge,
+  intro (line drawing, hairline, lead), linen RSVP band with seal, espresso footer.
+- Home: hero, statement, countdown, three-day arch trio, getting-there feature, contents, band.
+- Inner pages: Feature blocks (framed photo over linen panel with facts) for places; split sections for dense information.
 
 ## Assets
-- Photography: none shipped. Every image slot is a labelled placeholder until the couple adds files
-  to src/assets/photos (their decision, 2026-11-10). No illustrations. No icon set; flags are inline SVG.
+- Photography: none shipped; every slot is a labelled placeholder (couple's decision, 2026-11-10).
+- Illustration: six hairline SVG drawings made in-house (src/components/Ornament.astro). No icon set; flags are inline SVG.

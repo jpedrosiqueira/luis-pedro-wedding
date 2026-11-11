@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
 import { langPaths, type Lang, useT, rich, fmtTime, fmtDate } from '../../i18n';
 import { days, events } from '../../data/schedule';
 export const getStaticPaths = langPaths;
@@ -10,12 +11,13 @@ const s = t.schedule;
 const ev = s.events as Record<string, { title: string; desc: string; place: string }>;
 ---
 <Layout lang={lang} pageKey="schedule" slug="schedule" title={s.title} description={s.lead}>
-  <PageHero lang={lang} pageKey="schedule" title={s.title} lead={s.lead} />
+  <Banner lang={lang} title={s.title} photo="schedule" />
+  <Intro lang={lang} lead={s.lead} ornament="lantern" />
   {days.map((d) => (
-    <section class:list={['day', d.id === 'sat' && 'dusk on-dusk']} style={d.id !== 'sat' ? 'border-top: 1px solid var(--color-border)' : ''}>
+    <section class:list={['day', d.id === 'sat' ? 'day--main' : 'rule']}>
       <div class="wrap">
         <header class="day__head">
-          <p class="label">{d.date.slice(8)} · 11 · 2027</p>
+          <span class="day__num numeral" aria-hidden="true">{d.date.slice(8)}</span>
           <h2><time datetime={d.date}>{fmtDate(lang, d.date, { year: undefined })}</time></h2>
         </header>
         <ol class="timeline">
@@ -24,9 +26,11 @@ const ev = s.events as Record<string, { title: string; desc: string; place: stri
               <p class="timeline__time">
                 {e.time ? <time datetime={`${d.date}T${e.time}`}>{fmtTime(lang, e.time)}</time> : <Fragment set:html={rich(lang, s.timePending)} />}
               </p>
-              <h3>{ev[e.id].title}{e.tentative && <span class="tag">{t.common.tbc}</span>}</h3>
-              <p set:html={rich(lang, ev[e.id].desc)} />
-              <p class="timeline__place" set:html={rich(lang, ev[e.id].place)} />
+              <div class="timeline__body">
+                <h3>{ev[e.id].title}{e.tentative && <span class="tag">{t.common.tbc}</span>}</h3>
+                <p set:html={rich(lang, ev[e.id].desc)} />
+                <p class="timeline__place" set:html={rich(lang, ev[e.id].place)} />
+              </div>
             </li>
           ))}
         </ol>

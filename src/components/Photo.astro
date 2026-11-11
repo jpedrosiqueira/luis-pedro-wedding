@@ -2,37 +2,44 @@
 /**
  * Shows src/assets/photos/<name>.(jpg|jpeg|png|webp|avif) if that file exists,
  * resized and compressed automatically. If it does not exist yet, shows a
- * placeholder with the file name to add. See README, "Replacing photos".
+ * placeholder with the file name to add. See README, "Replace photos".
+ *
+ *   framed   white border, like a printed photo
+ *   arch     round top
+ *   fill     covers its container (hero and page banners)
+ *   fallback another photo name to use when this one is missing
  */
 import { Image } from 'astro:assets';
 import type { Lang } from '../i18n';
 import { useT } from '../i18n';
 
-interface Props { name: string; alt: string; lang: Lang; ratio?: string; arch?: boolean; eager?: boolean; sizes?: string; class?: string; }
-const { name, alt, lang, ratio = '4 / 5', arch = false, eager = false, sizes = '(min-width: 56rem) 40vw, 92vw', class: cls = '' } = Astro.props;
+interface Props { name: string; alt: string; lang: Lang; ratio?: string; arch?: boolean; framed?: boolean; fill?: boolean; eager?: boolean; sizes?: string; fallback?: string; class?: string; }
+const { name, alt, lang, ratio = '4 / 5', arch = false, framed = false, fill = false, eager = false, sizes = '(min-width: 56rem) 45vw, 92vw', fallback, class: cls = '' } = Astro.props;
 
 const files = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG}', { eager: true });
-const hit = Object.entries(files).find(([path]) => path.split('/').pop()!.replace(/\.[^.]+$/, '') === name);
+const find = (n?: string) => n && Object.entries(files).find(([path]) => path.split('/').pop()!.replace(/\.[^.]+$/, '') === n);
+const hit = find(name) || find(fallback);
 const t = useT(lang);
 const cleanAlt = alt.replace(/\[TODO:?\s*([^\]]*)\]/g, '').trim();
+const classes = ['photo', arch && 'photo--arch', framed && 'photo--framed', fill && 'photo--fill photo--dark', cls];
 ---
 {hit ? (
-  <div class:list={['photo', arch && 'photo--arch', cls]} style={`--ratio: ${ratio}`}>
+  <div class:list={classes} style={fill ? undefined : `--ratio: ${ratio}`}>
     <Image
       src={hit[1].default}
       alt={cleanAlt}
-      widths={[480, 800, 1200, 1600]}
-      sizes={sizes}
-      quality={72}
+      widths={fill ? [640, 960, 1440, 1920, 2560] : [480, 800, 1200, 1600]}
+      sizes={fill ? '100vw' : sizes}
+      quality={fill ? 68 : 72}
       loading={eager ? 'eager' : 'lazy'}
       fetchpriority={eager ? 'high' : undefined}
       decoding={eager ? 'sync' : 'async'}
     />
   </div>
 ) : (
-  <div class:list={['photo', 'photo--empty', arch && 'photo--arch', cls]} style={`--ratio: ${ratio}`} role="img" aria-label={`${t.common.photoTodo}: ${name}`}>
+  <div class:list={[...classes, 'photo--empty']} style={fill ? undefined : `--ratio: ${ratio}`} role="img" aria-label={`${t.common.photoTodo}: ${name}`}>
     <div>
-      <svg viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+      <svg viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
         <path d="M8 98V42a32 32 0 0 1 64 0v56" />
         <path d="M18 98V44a22 22 0 0 1 44 0v54" />
         <path d="M2 98h76" />

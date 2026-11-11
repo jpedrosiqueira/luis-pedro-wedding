@@ -1,5 +1,5 @@
 {
-  "_review": "Lines written in your voice that you may want to reword: home.intro, home.countdown.title, home.index.*, gifts.lead.",
+  "_review": "Lines written in your voice that you may want to reword: home.statement, home.intro, home.countdown.title, home.index.*, gifts.lead.",
   "_help": "English copy. Edit the text on the right of each colon; keep the keys on the left unchanged. Markers: [TODO: note] shows a highlighted reminder on the page. **bold** and [link text](https://address) work. Smart values adapt to each language: {{date:2027-11-06}}, {{time:15:00}}, {{mxn:200}}, {{dist:22}} (kilometres), {{temp:23}} (Celsius).",
   "meta": {
     "siteTitle": "Luis & Pedro",
@@ -27,17 +27,17 @@
   "common": {
     "rsvp": "RSVP",
     "photoTodo": "Photo to add",
-    "continue": "Keep reading",
     "openMaps": "Open in Google Maps",
     "tbc": "To be confirmed",
     "optional": "optional",
-    "lastChecked": "Details last checked in November 2026. Please confirm before you book."
+    "lastChecked": "Details last checked in November 2026. Please confirm before you book.",
+    "withLove": "With love,"
   },
   "home": {
-    "eyebrow": "We're getting married",
     "date": "{{date:2027-11-06}}",
     "place": "Hacienda de Triana · Val'Quirico, Tlaxcala, Mexico",
-    "intro": "Three days in a stone village between two volcanoes, with the people we love most. Come for the wedding, stay for the tacos.",
+    "statement": "**Three days** in a stone village between two volcanoes, with the **people we love most**.",
+    "intro": "Come for the wedding, stay for the tacos.",
     "heroAlt": "Luis and Pedro",
     "countdown": {
       "title": "Until we say yes",
@@ -57,10 +57,21 @@
     "weekend": {
       "title": "The weekend",
       "lead": "Arrive Friday, dance Saturday, say goodbye over brunch on Sunday.",
-      "fri": "Rompe-hielo: drinks to break the ice",
-      "sat": "Ceremony, dinner and dancing until 11",
-      "sun": "Farewell brunch",
-      "link": "See the full schedule"
+      "link": "See the full schedule",
+      "items": {
+        "fri": {
+          "title": "Rompe-hielo",
+          "text": "Welcome drinks to break the ice"
+        },
+        "sat": {
+          "title": "The wedding",
+          "text": "Ceremony, dinner and dancing until 11"
+        },
+        "sun": {
+          "title": "Farewell brunch",
+          "text": "One last coffee together"
+        }
+      }
     },
     "gettingThere": {
       "title": "Getting there",
@@ -178,10 +189,22 @@
     "expect": {
       "title": "What to expect",
       "items": [
-        { "title": "An open-air courtyard, under a tent", "text": "We are outdoors but covered. The tent keeps off sun and any surprise shower, and evenings get cool, so bring a layer." },
-        { "title": "Cobblestones everywhere", "text": "The streets are uneven stone. Thin heels and cobblestones do not get along. See the dress and weather page for shoe advice." },
-        { "title": "High altitude", "text": "The village sits at roughly 2,200 metres (about 7,200 feet). Drink water, go easy on the first drink, and use sunscreen during the day." },
-        { "title": "Everything on foot", "text": "Cars stay at the edge of the village. [TODO: parking and drop-off details for the hacienda]" }
+        {
+          "title": "An open-air courtyard, under a tent",
+          "text": "We are outdoors but covered. The tent keeps off sun and any surprise shower, and evenings get cool, so bring a layer."
+        },
+        {
+          "title": "Cobblestones everywhere",
+          "text": "The streets are uneven stone. Thin heels and cobblestones do not get along. See the dress and weather page for shoe advice."
+        },
+        {
+          "title": "High altitude",
+          "text": "The village sits at roughly 2,200 metres (about 7,200 feet). Drink water, go easy on the first drink, and use sunscreen during the day."
+        },
+        {
+          "title": "Everything on foot",
+          "text": "Cars stay at the edge of the village. [TODO: parking and drop-off details for the hacienda]"
+        }
       ]
     },
     "map": {
@@ -277,18 +300,39 @@
       "title": "Inside Val'Quirico",
       "lead": "Small hotels plus many lofts and apartments, all a short walk from the hacienda. Book early: the village fills up on weekends.",
       "items": [
-        { "name": "Villa Toscana Val'Quirico Lofts & Suites", "text": "Boutique hotel with lofts and suites in the centre of the village." },
-        { "name": "Hotel Canaria ValQuirico", "text": "Hotel within Val'Quirico. [TODO: confirm and add a note]" },
-        { "name": "Posada Valquiria ValQuirico", "text": "Small inn within Val'Quirico. [TODO: confirm and add a note]" },
-        { "name": "Lofts and apartments", "text": "Airbnb, Booking and Expedia list dozens of private lofts inside the village, good for families or groups of friends." }
+        {
+          "name": "Villa Toscana Val'Quirico Lofts & Suites",
+          "text": "Boutique hotel with lofts and suites in the centre of the village."
+        },
+        {
+          "name": "Hotel Canaria ValQuirico",
+          "text": "Hotel within Val'Quirico. [TODO: confirm and add a note]"
+        },
+        {
+          "name": "Posada Valquiria ValQuirico",
+          "text": "Small inn within Val'Quirico. [TODO: confirm and add a note]"
+        },
+        {
+          "name": "Lofts and apartments",
+          "text": "Airbnb, Booking and Expedia list dozens of private lofts inside the village, good for families or groups of friends."
+        }
       ]
     },
     "nearby": {
       "title": "Nearby",
       "items": [
-        { "name": "Puebla, historic centre", "text": "About 30 minutes away. Colonial streets, great food and plenty of hotels at every budget." },
-        { "name": "Cholula", "text": "A lively university town next to Puebla with boutique hotels and a famous pyramid. Roughly 30 to 40 minutes. [TODO: confirm drive time]" },
-        { "name": "Tlaxcala city", "text": "Quiet, colourful and about 30 minutes away." }
+        {
+          "name": "Puebla, historic centre",
+          "text": "About 30 minutes away. Colonial streets, great food and plenty of hotels at every budget."
+        },
+        {
+          "name": "Cholula",
+          "text": "A lively university town next to Puebla with boutique hotels and a famous pyramid. Roughly 30 to 40 minutes. [TODO: confirm drive time]"
+        },
+        {
+          "name": "Tlaxcala city",
+          "text": "Quiet, colourful and about 30 minutes away."
+        }
       ]
     },
     "tip": "If you stay outside the village, plan your ride home on Saturday night before the party starts. [TODO: confirm whether a late shuttle to Puebla will run]"
@@ -337,7 +381,8 @@
     "muertos": {
       "title": "Arriving early?",
       "text": "Day of the Dead is celebrated on November 1 and 2, the weekend before the wedding. Puebla, Tlaxcala and Atlixco fill with marigolds, altars and parades. It is a beautiful reason to come a few days ahead."
-    }
+    },
+    "driveLabel": "By car from Val'Quirico"
   },
   "attire": {
     "title": "Dress & weather",
@@ -350,9 +395,18 @@
       "title": "The weather",
       "text": "At this altitude the sun is strong and the shade is cool. Rain is unlikely in November. After dark you will want a jacket, a shawl or a wrap, even under the tent.",
       "stats": [
-        { "value": "{{temp:23}}", "label": "typical afternoon" },
-        { "value": "{{temp:7}}", "label": "typical night" },
-        { "value": "2,200 m", "label": "altitude, about 7,200 ft" }
+        {
+          "value": "{{temp:23}}",
+          "label": "typical afternoon"
+        },
+        {
+          "value": "{{temp:7}}",
+          "label": "typical night"
+        },
+        {
+          "value": "2,200 m",
+          "label": "altitude, about 7,200 ft"
+        }
       ],
       "source": "Based on climate averages for nearby Puebla. Check the forecast the week before."
     },
@@ -491,7 +545,6 @@
     }
   },
   "footer": {
-    "line": "With love, Luis & Pedro",
     "place": "Val'Quirico, Tlaxcala · {{date:2027-11-06}}"
   }
 }

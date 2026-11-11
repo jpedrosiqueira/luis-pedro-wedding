@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/PageHero.astro';
+import Banner from '../../components/Banner.astro';
+import Intro from '../../components/Intro.astro';
 import { langPaths, type Lang, useT, rich, locales, langs } from '../../i18n';
 import { site } from '../../config/site';
 export const getStaticPaths = langPaths;
@@ -11,11 +12,13 @@ const f = r.fields;
 const connected = Boolean(site.rsvp.endpoint);
 ---
 <Layout lang={lang} pageKey="rsvp" slug="rsvp" title={r.title} description={r.lead} band={false}>
-  <PageHero lang={lang} pageKey="rsvp" title={r.title} lead={r.lead} />
-  <section class="section" style="padding-top: 0">
+  <Banner lang={lang} title={r.title} photo="rsvp" />
+  <Intro lang={lang} lead={r.lead}>
+    <p class="muted" style="margin-top: var(--space-4)" set:html={rich(lang, r.deadline)} />
+  </Intro>
+  <section class="section section--flush">
     <div class="wrap">
-      <p class="prose" style="margin-bottom: var(--space-8)" set:html={rich(lang, r.deadline)} />
-      {!connected && <p class="callout" style="margin-bottom: var(--space-8); max-width: 40rem" set:html={rich(lang, r.notConnected)} />}
+      {!connected && <p class="callout" style="margin: 0 auto var(--space-8); max-width: 40rem" set:html={rich(lang, r.notConnected)} />}
 
       <form class="form" id="rsvp-form" method="post" action={site.rsvp.endpoint || undefined}
         data-endpoint={site.rsvp.endpoint} data-error={r.error} data-sending={f.sending}>
@@ -119,10 +122,10 @@ const connected = Boolean(site.rsvp.endpoint);
         </div>
       </form>
 
-      <div id="rsvp-done" class="prose" hidden tabindex="-1">
+      <div id="rsvp-done" class="done" hidden tabindex="-1">
         <h2>{r.success.title}</h2>
-        <p data-yes style="font-size: var(--text-lg)">{r.success.yes}</p>
-        <p data-no style="font-size: var(--text-lg)">{r.success.no}</p>
+        <p data-yes class="lead">{r.success.yes}</p>
+        <p data-no class="lead">{r.success.no}</p>
       </div>
     </div>
   </section>

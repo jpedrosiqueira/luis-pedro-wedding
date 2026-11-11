@@ -1,10 +1,13 @@
 ---
-import '@fontsource-variable/fraunces/opsz.css';
-import '@fontsource-variable/instrument-sans/wght.css';
+import '@fontsource-variable/cormorant-garamond/wght.css';
+import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+import '@fontsource-variable/bodoni-moda/wght.css';
+import '@fontsource-variable/jost/wght.css';
 import '../styles/theme.css';
 import '../styles/global.css';
-import frauncesUrl from '@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url';
-import sansUrl from '@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url';
+import displayUrl from '@fontsource-variable/bodoni-moda/files/bodoni-moda-latin-wght-normal.woff2?url';
+import headingUrl from '@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-wght-normal.woff2?url';
+import bodyUrl from '@fontsource-variable/jost/files/jost-latin-wght-normal.woff2?url';
 import { locales, langs, type Lang, useT, plain } from '../i18n';
 import { site } from '../config/site';
 import Header from '../components/Header.astro';
@@ -65,10 +68,11 @@ const abs = (p: string) => new URL(p, Astro.site).href;
     <meta property="og:image:alt" content={t.meta.ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <meta name="theme-color" content="#f6efe4" />
+    <meta name="theme-color" content="#faf6f3" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href={frauncesUrl} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={sansUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={displayUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={headingUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={bodyUrl} as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip" href="#main">{t.nav.skip}</a>
@@ -90,12 +94,28 @@ const abs = (p: string) => new URL(p, Astro.site).href;
           document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); } });
           document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
         }
-        // Gentle reveal on scroll.
-        var els = document.querySelectorAll('[data-reveal]');
-        if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('is-revealed'); }); return; }
+        // Header: clear over the photo, solid once the photo is behind you.
+        // On wide screens it steps aside while you scroll down and returns when you scroll up.
+        var header = document.querySelector('[data-header]');
+        var top = document.querySelector('.hero, .banner');
+        var last = window.scrollY, queued = false, edge = 0;
+        function measure() { edge = top ? top.offsetHeight - header.offsetHeight - 8 : 0; update(); }
+        function update() {
+          queued = false;
+          var y = window.scrollY;
+          header.classList.toggle('is-solid', y > edge);
+          header.classList.toggle('is-away', y > last && y > edge + 200 && !header.contains(document.activeElement));
+          last = y;
+        }
+        window.addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+        window.addEventListener('resize', measure);
+        measure();
+        // The arches on the home page open as they come into view.
+        var els = document.querySelectorAll('[data-unveil]');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('is-in'); }); return; }
         var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-revealed'); io.unobserve(en.target); } });
-        }, { rootMargin: '0px 0px -8% 0px' });
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+        }, { rootMargin: '0px 0px -12% 0px' });
         els.forEach(function (el) { io.observe(el); });
       })();
     </script>
