@@ -177,6 +177,7 @@ p { text-wrap: pretty; }
 .banner { min-height: clamp(17rem, 46svh, 26rem); align-items: end; }
 .hero > *, .banner > * { grid-area: 1 / 1; }
 .hero .photo--fill, .banner .photo--fill { z-index: -2; }
+.hero .photo--fill:not(.photo--empty), .banner .photo--fill:not(.photo--empty) { background: var(--color-photo-empty); }
 .scrim { z-index: -1; align-self: stretch; background: linear-gradient(180deg, rgb(40 30 24 / 0.62) 0%, rgb(40 30 24 / 0.34) 14%, rgb(40 30 24 / 0) 30%, rgb(40 30 24 / 0.1) 40%, rgb(40 30 24 / 0.56) 68%, rgb(40 30 24 / 0.7) 100%); }
 .banner .photo img { object-position: 50% 24%; }
 .hero__content, .banner__content { text-shadow: 0 1px 22px rgb(40 30 24 / 0.5); }
@@ -411,7 +412,10 @@ p { text-wrap: pretty; }
 
 /* Motion: one entrance for the hero, one reveal for the arches ------------------- */
 @media (prefers-reduced-motion: no-preference) {
-  .hero .photo--fill img { animation: settle 1.6s var(--ease-out) both; }
+  /* The photo settles in once, then drifts very slowly so the scene feels alive.
+     The drift pauses once you have scrolled past the photo. */
+  .hero .photo--fill img { animation: settle 1.6s var(--ease-out) both, drift 28s ease-in-out 1.6s infinite alternate; }
+  .site-header.is-solid ~ main .hero .photo--fill img { animation-play-state: paused; }
   .hero__content > * { animation: rise 800ms var(--ease-out) both; }
   .hero__content > :nth-child(1) { animation-delay: 200ms; }
   .hero__content > :nth-child(2) { animation-delay: 320ms; }
@@ -426,6 +430,7 @@ p { text-wrap: pretty; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
 @keyframes settle { from { opacity: 0; transform: scale(1.06); } }
+@keyframes drift { to { transform: scale(1.05) translate3d(-1.2%, -0.8%, 0); } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
