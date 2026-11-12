@@ -177,7 +177,10 @@ p { text-wrap: pretty; }
 .banner { min-height: clamp(17rem, 46svh, 26rem); align-items: end; }
 .hero > *, .banner > * { grid-area: 1 / 1; }
 .hero .photo--fill, .banner .photo--fill { z-index: -2; }
-.scrim { z-index: -1; background: linear-gradient(180deg, rgb(40 30 24 / 0.42) 0%, rgb(40 30 24 / 0) 26%, rgb(40 30 24 / 0) 42%, rgb(40 30 24 / 0.5) 100%); }
+.scrim { z-index: -1; align-self: stretch; background: linear-gradient(180deg, rgb(40 30 24 / 0.62) 0%, rgb(40 30 24 / 0.34) 14%, rgb(40 30 24 / 0) 30%, rgb(40 30 24 / 0.1) 40%, rgb(40 30 24 / 0.56) 68%, rgb(40 30 24 / 0.7) 100%); }
+.banner .photo img { object-position: 50% 24%; }
+.hero__content, .banner__content { text-shadow: 0 1px 22px rgb(40 30 24 / 0.5); }
+.hero__content .btn { text-shadow: none; }
 .hero__content { padding-block: 7.5rem clamp(5.5rem, 13svh, 9rem); }
 .hero__names { font-family: var(--font-display); font-weight: 400; font-size: clamp(3.3rem, 17.5vw, 6rem); line-height: 0.98; letter-spacing: 0.02em; }
 .hero__names span { display: block; }
