@@ -146,6 +146,7 @@ const connected = Boolean(site.rsvp.endpoint);
       }
       form.addEventListener('change', function (e) { if (e.target.name === 'attending') sync(); });
       sync();
+      requestAnimationFrame(function () { form.classList.add('is-ready'); });
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
